@@ -1,15 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Hello from '@/components/Hello';
+import Order from '@/components/Order';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
+      component: Order,
+      name: 'Order',
       path: '/',
-      name: 'Hello',
-      component: Hello,
     },
   ],
 });
