@@ -20,20 +20,23 @@ import { getAuthorizationUrl } from '@/utils';
 import methods from '@/api/payment-methods';
 
 export default {
-  created() {
-    this.order = this.$route.query.order;
+  computed: {
+    donation() {
+      return this.$store.state.donation;
+    },
   },
   data() {
     return {
       methods,
-      order: null,
     };
   },
   methods: {
     selectMethod(method) {
-      // And here we go to DocData
-      postOrderPayment(method, this.order).then((response) => {
-        window.location = getAuthorizationUrl(response.authorization_action.url, this.order);
+      postOrderPayment(method, this.donation.order).then((response) => {
+        window.location = getAuthorizationUrl(
+          response.authorization_action.url,
+          this.donation.order,
+        );
       });
     },
   },

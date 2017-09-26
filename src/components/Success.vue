@@ -5,6 +5,8 @@
     </h3>
 
     <small>Show this screen to the vendor, we hope you're happy with your new stuff!</small>
+
+    <router-link to="/project">Show project!</router-link>
   </div>
 </template>
 

@@ -16,13 +16,18 @@
 </template>
 
 <script>
-import { getProject } from '@/api';
+import { mapActions } from 'vuex';
 
 export default {
   beforeDestroy() {
     if (this.interval) {
       clearInterval(this.interval);
     }
+  },
+  computed: {
+    project() {
+      return this.$store.state.project;
+    },
   },
   created() {
     this.getProject();
@@ -32,16 +37,13 @@ export default {
   },
   data() {
     return {
-      project: null,
       interval: null,
     };
   },
   methods: {
-    getProject() {
-      getProject().then((project) => {
-        this.project = project;
-      });
-    },
+    ...mapActions([
+      'getProject',
+    ]),
   },
   name: 'project',
 };
