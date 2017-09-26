@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <router-view></router-view>
   </div>
 </template>
@@ -11,15 +11,30 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
+html, body {
+  width: 100% !important;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+}
+
+body {
+}
+
+.app {
   text-align: center;
-  color: #2c3e50;
+  >div {
+    overflow: hidden;
+  }
+
 }
-.uk-grid-small {
-  display: grid;
-  width: 80%;
+
+
+.grid {
+  padding: 20px;
 }
+
 </style>

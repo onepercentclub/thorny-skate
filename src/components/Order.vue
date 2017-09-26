@@ -1,7 +1,8 @@
 <template>
   <div class="">
-    <navBar></navBar>
-    <div class="uk-grid-small" uk-grid>
+    <paper></paper>
+    <div class="grid" uk-grid>
+      <goodUp></goodUp>
       <form
         class="order"
         v-on:submit.prevent="addDonation"
@@ -17,6 +18,8 @@
         </button>
       </form>
   </div>
+  <navBar></navBar>
+
   </div>
 </template>
 
@@ -24,6 +27,8 @@
 import { postDonation } from '@/api';
 import router from '@/router';
 import navigationBar from '@/components/page-elements/Navigation-bar';
+import wallpaper from '@/components/page-elements/Wallpaper';
+import logo from '@/components/page-elements/Logo';
 
 export default {
   data() {
@@ -45,10 +50,25 @@ export default {
 
   components: {
     navBar: navigationBar,
+    paper: wallpaper,
+    goodUp: logo,
+
   },
 };
 </script>
 
 <style scoped lang="scss">
+
+.uk-input {
+  height: 60px;
+  font-size: 50px;
+  background-color: rgba(255,255,255, .8);
+  text-align: center;
+}
+
+.uk-button {
+  margin: 20px auto;
+  width: 100%;
+}
 
 </style>

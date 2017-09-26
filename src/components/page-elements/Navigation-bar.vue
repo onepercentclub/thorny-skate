@@ -24,4 +24,25 @@
 
 <style scoped lang="scss">
 
+.uk-navbar-container {
+  overflow: auto;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.uk-navbar-nav {
+  width: 100%;
+
+  li {
+    flex: 1;
+
+    a {
+      height: 40px;
+      padding: 0 10px;
+      font-size: 0.675rem;
+    }
+  }
+}
+
 </style>
