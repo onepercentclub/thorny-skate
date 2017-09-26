@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { postDonation } from '@/config/api';
+import { postDonation } from '@/api';
 
 export default {
   data() {

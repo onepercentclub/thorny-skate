@@ -4,6 +4,7 @@
   "description": "A single project donation app",
   "author": "Maurice Kleine <info@mauricekleine.nl>",
   "private": true,
+  "repository": "https://github.com/onepercentclub/thorny-skate",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",

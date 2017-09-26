@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://onepercent.localhost:8000/api',
+  baseURL: 'http://localhost:3000/api',
+  withCredentials: 'include',
 });
 
 export const postDonation = amount => api.post('orders/my/').then((response) => {
