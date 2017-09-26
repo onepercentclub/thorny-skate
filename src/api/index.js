@@ -5,6 +5,10 @@ const api = axios.create({
   withCredentials: 'include',
 });
 
+const project = 'father-involvement-challenge';
+
+export const getProject = () => api.get(`bb_projects/projects/${project}`).then(({ data }) => data);
+
 export const postDonation = amount => api.post('orders/my/').then((response) => {
   // Get the order id
   const { data: { id: order } } = response;
@@ -17,11 +21,11 @@ export const postDonation = amount => api.post('orders/my/').then((response) => 
     },
     anonymous: true,
     order,
-    project: 'father-involvement-challenge',
+    project,
   };
 
   // Post the donation
-  return api.post('donations/my/', donation).then(result => result.data);
+  return api.post('donations/my/', donation).then(({ data }) => data);
 });
 
 export default api;
