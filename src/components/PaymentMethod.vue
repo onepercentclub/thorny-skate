@@ -24,6 +24,9 @@ export default {
     donation() {
       return this.$store.state.donation;
     },
+    project() {
+      return this.$store.state.project;
+    },
   },
   data() {
     return {
@@ -36,6 +39,7 @@ export default {
         window.location = getAuthorizationUrl(
           response.authorization_action.url,
           this.donation.order,
+          this.donation.project,
         );
       });
     },

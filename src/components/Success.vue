@@ -1,31 +1,36 @@
 <template>
-  <div v-if="order">
+  <div v-if="order && project">
     <h3>
       We show a success page with confetti here because your donated €{{order.total.amount}}!
     </h3>
 
     <small>Show this screen to the vendor, we hope you're happy with your new stuff!</small>
 
-    <router-link to="/project">Show project!</router-link>
+    <router-link :to="{ path: 'project', query: { slug: project.id }}">Show project!</router-link>
   </div>
 </template>
 
 <script>
-import { getOrder } from '@/api';
+import { mapActions } from 'vuex';
 
 export default {
-  created() {
-    getOrder(this.$route.query.order).then((order) => {
-      this.order = order;
-    });
+  computed: {
+    order() {
+      return this.$store.state.order;
+    },
+    project() {
+      return this.$store.state.project;
+    },
   },
-  data() {
-    return {
-      order: null,
-    };
+  created() {
+    this.getProject(this.$route.query.slug);
+    this.getOrder(this.$route.query.order);
   },
   methods: {
-
+    ...mapActions([
+      'getOrder',
+      'getProject',
+    ]),
   },
   name: 'success',
 };

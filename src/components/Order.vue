@@ -1,6 +1,7 @@
 <template>
   <form
     class="order"
+    v-if="project"
     v-on:submit.prevent="addDonation"
   >
     <h1>
@@ -31,9 +32,12 @@ export default {
     project() {
       return this.$store.state.project;
     },
+    slug() {
+      return this.$route.query.slug;
+    },
   },
   created() {
-    this.getProject();
+    this.getProject(this.slug);
   },
   data() {
     return {
@@ -42,7 +46,7 @@ export default {
   },
   methods: {
     addDonation() {
-      this.postDonation(this.amount).then(() => {
+      this.postDonation({ amount: this.amount, slug: this.slug }).then(() => {
         router.push({ path: 'paymentmethod' });
       }, (error) => {
         console.log(error);

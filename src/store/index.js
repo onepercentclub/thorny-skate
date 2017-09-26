@@ -1,16 +1,21 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { getProject, postDonation } from '@/api';
+import { getOrder, getProject, postDonation } from '@/api';
 
 Vue.use(Vuex);
 
 const actions = {
-  getProject: ({ commit }) => getProject().then(project => commit('getProject', project)),
-  postDonation: ({ commit }, amount) => postDonation(amount).then(donation => commit('postDonation', donation)),
+  getOrder: ({ commit }, id) => getOrder(id).then(order => commit('getOrder', order)),
+  getProject: ({ commit }, slug) => getProject(slug).then(project => commit('getProject', project)),
+  postDonation: ({ commit }, { amount, slug }) => postDonation(amount, slug).then(donation => commit('postDonation', donation)),
 };
 
 const mutations = {
+  getOrder(state, order) {
+    // eslint-disable-next-line
+    state.order = order;
+  },
   getProject(state, project) {
     // eslint-disable-next-line
     state.project = project;
@@ -23,6 +28,7 @@ const mutations = {
 
 const state = {
   donation: null,
+  order: null,
   project: null,
 };
 
