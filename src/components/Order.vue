@@ -3,12 +3,17 @@
     <paper></paper>
     <div class="grid" uk-grid>
       <goodUp></goodUp>
+      <h1>
+        {{project.title}}
+      </h1>
+
       <h2>
         Select your amount:
       </h2>
       <form
         class="order"
         v-on:submit.prevent="addDonation"
+        v-if="project"
       >
         <input
           class="uk-input"
@@ -27,13 +32,27 @@
 </template>
 
 <script>
-import { postDonation } from '@/api';
+import { mapActions } from 'vuex';
 import router from '@/router';
 import navigationBar from '@/components/page-elements/Navigation-bar';
 import wallpaper from '@/components/page-elements/Wallpaper';
 import logo from '@/components/page-elements/Logo';
 
 export default {
+  computed: {
+    donation() {
+      return this.$store.state.donation;
+    },
+    project() {
+      return this.$store.state.project;
+    },
+    slug() {
+      return this.$route.query.slug;
+    },
+  },
+  created() {
+    this.getProject(this.slug);
+  },
   data() {
     return {
       amount: 0,
@@ -41,12 +60,16 @@ export default {
   },
   methods: {
     addDonation() {
-      postDonation(this.amount).then((donation) => {
-        router.push({ path: 'paymentmethod', query: { order: donation.order } });
+      this.postDonation({ amount: this.amount, slug: this.slug }).then(() => {
+        router.push({ path: 'paymentmethod' });
       }, (error) => {
         console.log(error);
       });
     },
+    ...mapActions([
+      'getProject',
+      'postDonation',
+    ]),
   },
 
   name: 'order',

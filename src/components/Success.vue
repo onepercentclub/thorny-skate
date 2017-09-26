@@ -4,12 +4,15 @@
     <div class="grid" uk-grid>
       <goodUp></goodUp>
 
-      <div v-if="order">
+      <div v-if="order && project">
         <h3>
           We show a success page with confetti here because your donated €{{order.total.amount}}!
         </h3>
 
         <small>Show this screen to the vendor, we hope you're happy with your new stuff!</small>
+
+        <router-link :to="{ path: 'project', query: { slug: project.id }}">Show project!</router-link>
+
       </div>
     </div>
     <navBar></navBar>
@@ -18,26 +21,32 @@
 </template>
 
 <script>
-import { getOrder } from '@/api';
+import { mapActions } from 'vuex';
+
 import wallpaper from '@/components/page-elements/Wallpaper';
 import navigationBar from '@/components/page-elements/Navigation-bar';
 import logo from '@/components/page-elements/Logo';
 
 export default {
-  created() {
-    getOrder(this.$route.query.order).then((order) => {
-      this.order = order;
-    });
+  computed: {
+    order() {
+      return this.$store.state.order;
+    },
+    project() {
+      return this.$store.state.project;
+    },
   },
 
-  data() {
-    return {
-      order: null,
-    };
+  created() {
+    this.getProject(this.$route.query.slug);
+    this.getOrder(this.$route.query.order);
   },
 
   methods: {
-
+    ...mapActions([
+      'getOrder',
+      'getProject',
+    ]),
   },
 
   name: 'success',

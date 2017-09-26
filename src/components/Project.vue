@@ -12,7 +12,7 @@
         <div class="uk-card-footer">
           €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
           <div class="">
-              <router-link to="/">Donate!</router-link>
+              <router-link :to="{ path: '/', query: { slug: project.id }}">Donate!</router-link>
           </div>
         </div>
 
@@ -27,10 +27,7 @@
 </template>
 
 <script>
-import {
-  getProject,
-
-} from '@/api';
+import { mapActions } from 'vuex';
 
 import wallpaper from '@/components/page-elements/Wallpaper';
 import navigationBar from '@/components/page-elements/Navigation-bar';
@@ -42,24 +39,26 @@ export default {
       clearInterval(this.interval);
     }
   },
+  computed: {
+    project() {
+      return this.$store.state.project;
+    },
+  },
   created() {
-    this.getProject();
+    this.getProject(this.$route.query.slug);
 
     // Get the latest data every 30 seconds
-    this.interval = setInterval(this.getProject, 30000);
+    this.interval = setInterval(() => this.getProject(this.$route.query.slug), 30000);
   },
   data() {
     return {
-      project: null,
       interval: null,
     };
   },
   methods: {
-    getProject() {
-      getProject().then((project) => {
-        this.project = project;
-      });
-    },
+    ...mapActions([
+      'getProject',
+    ]),
   },
   name: 'project',
 
