@@ -1,32 +1,37 @@
 <template>
-  <div class="">
-    <paper></paper>
-    <div class="grid" uk-grid>
-      <goodUp></goodUp>
-      <div v-if="project">
-
-        <h1>
-          {{project.title}}
-        </h1>
-
-        <p v-html="project.pitch"></p>
-
-        <!-- Make a chart / diagram of this -->
-        <h3>
+<div class="">
+  <paper></paper>
+  <div class="grid" uk-grid>
+    <goodUp></goodUp>
+    <div v-if="project">
+      <div class="uk-card uk-card uk-card-default uk-card-body">
+        <div class="uk-card-header">
+          <h3 class="uk-card-title">{{project.title}}</h3>
+        </div>
+        <div class="uk-card-body"><p v-html="project.pitch"></p></div>
+        <div class="uk-card-footer">
           €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
-        </h3>
+          <div class="">
+              <router-link to="/">Donate!</router-link>
+          </div>
+        </div>
 
-        <router-link to="/">Donate!</router-link>
       </div>
+
     </div>
-
-    <navBar></navBar>
-
   </div>
+
+  <navBar></navBar>
+
+</div>
 </template>
 
 <script>
-import { getProject } from '@/api';
+import {
+  getProject,
+
+} from '@/api';
+
 import wallpaper from '@/components/page-elements/Wallpaper';
 import navigationBar from '@/components/page-elements/Navigation-bar';
 import logo from '@/components/page-elements/Logo';
@@ -68,5 +73,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.wallpaper {
+    background-image: url("http://www.planwallpaper.com/static/images/cat-wallpaper-animals_GLl9liz.jpg");
+}
 </style>

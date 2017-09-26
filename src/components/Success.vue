@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <paper></paper>
+    <canvas id="canvas"></canvas>
     <div class="grid" uk-grid>
       <goodUp></goodUp>
 
@@ -29,14 +29,17 @@ export default {
       this.order = order;
     });
   },
+
   data() {
     return {
       order: null,
     };
   },
+
   methods: {
 
   },
+
   name: 'success',
 
   components: {
@@ -44,9 +47,17 @@ export default {
     paper: wallpaper,
     goodUp: logo,
   },
+
 };
 </script>
 
 <style scoped lang="scss">
+
+canvas {
+  display: block;
+  position: relative;
+  zindex: 1;
+  pointer-events: none;
+}
 
 </style>

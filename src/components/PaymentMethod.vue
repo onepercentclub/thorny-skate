@@ -7,10 +7,10 @@
         Select your bank:
       </h2>
       <div class="selection">
-        <div v-for="method in methods" class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
-          <button v-on:click="selectMethod(method.value)">
+        <div v-for="method in methods" >
+          <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m" v-on:click="selectMethod(method.value)">
             <h3 class="uk-card-title">{{method.label}}</h3>
-          </button>
+          </div>
         </div>
 
       </div>
@@ -62,14 +62,15 @@ export default {
   background-image: url("http://www.planwallpaper.com/static/images/cat-wallpaper-animals_GLl9liz.jpg");
 
 }
+
 .selection {
   height: 500px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .uk-card {
   margin: 50px auto;
-  background-color: rgba(255,255,255, .8);
+
   h3 {
     font-size: 30px;
     margin: 0;

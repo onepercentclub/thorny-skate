@@ -4,7 +4,7 @@
     <div class="uk-navbar-left">
 
         <ul class="uk-navbar-nav">
-            <li class="uk-active">
+            <li v-bind:class="{ active: uk-active }">
               <a href="#/">Order</a>
             </li>
             <li>
