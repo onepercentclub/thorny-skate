@@ -4,6 +4,8 @@
 
 ## Build Setup
 
+# Be sure to install and run [starry-ray](https://github.com/onepercentclub/starry-ray)
+
 ``` bash
 # install dependencies
 yarn
