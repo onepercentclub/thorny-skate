@@ -5,7 +5,12 @@
 </template>
 
 <script>
+import { getOrder } from '@/api';
+
 export default {
+  created() {
+    getOrder(this.$route.query.order);
+  },
   data() {
     return {
 

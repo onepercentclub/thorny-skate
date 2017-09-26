@@ -27,8 +27,8 @@ export default {
   },
   methods: {
     addDonation() {
-      postDonation(this.amount).then(() => {
-        router.push('paymentmethod');
+      postDonation(this.amount).then((donation) => {
+        router.push({ path: 'paymentmethod', query: { order: donation.order } });
       }, (error) => {
         console.log(error);
       });
