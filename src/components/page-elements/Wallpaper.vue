@@ -12,5 +12,15 @@
     overflow: hidden;
     z-index: -1;
     top: 0;
+
+    &:before {
+      position: relative;
+      top: 0;
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0);
+    }
 }
 </style>

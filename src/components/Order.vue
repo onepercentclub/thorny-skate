@@ -3,6 +3,9 @@
     <paper></paper>
     <div class="grid" uk-grid>
       <goodUp></goodUp>
+      <h2>
+        Select your amount:
+      </h2>
       <form
         class="order"
         v-on:submit.prevent="addDonation"
@@ -63,6 +66,7 @@ export default {
   font-size: 50px;
   background-color: rgba(255,255,255, .8);
   text-align: center;
+  margin: 50px auto;
 }
 
 .uk-button {

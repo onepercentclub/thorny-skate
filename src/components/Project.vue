@@ -1,25 +1,35 @@
 <template>
-  <div v-if="project">
+  <div class="">
+    <paper></paper>
+    <div class="grid" uk-grid>
+      <goodUp></goodUp>
+      <div v-if="project">
+
+        <h1>
+          {{project.title}}
+        </h1>
+
+        <p v-html="project.pitch"></p>
+
+        <!-- Make a chart / diagram of this -->
+        <h3>
+          €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
+        </h3>
+
+        <router-link to="/">Donate!</router-link>
+      </div>
+    </div>
+
     <navBar></navBar>
-    <h1>
-      {{project.title}}
-    </h1>
 
-    <p v-html="project.pitch"></p>
-
-    <!-- Make a chart / diagram of this -->
-    <h3>
-      €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
-    </h3>
-
-    <router-link to="/">Donate!</router-link>
   </div>
 </template>
 
 <script>
 import { getProject } from '@/api';
+import wallpaper from '@/components/page-elements/Wallpaper';
 import navigationBar from '@/components/page-elements/Navigation-bar';
-
+import logo from '@/components/page-elements/Logo';
 
 export default {
   beforeDestroy() {
@@ -50,6 +60,8 @@ export default {
 
   components: {
     navBar: navigationBar,
+    paper: wallpaper,
+    goodUp: logo,
   },
 
 };

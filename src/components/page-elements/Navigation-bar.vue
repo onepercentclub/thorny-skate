@@ -5,16 +5,16 @@
 
         <ul class="uk-navbar-nav">
             <li class="uk-active">
-              <a href="#">Order</a>
+              <a href="#/">Order</a>
             </li>
             <li>
-              <a href="#">PaymentMethod</a>
+              <a href="#/paymentmethod">PaymentMethod</a>
             </li>
             <li>
-              <a href="#">Success</a>
+              <a href="#/success">Success</a>
             </li>
             <li>
-              <a href="#">Project</a>
+              <a href="#/project">Project</a>
             </li>
         </ul>
 
