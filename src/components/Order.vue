@@ -1,20 +1,22 @@
 <template>
   <div class="">
     <navBar></navBar>
-    <form
-      class="order"
-      v-on:submit.prevent="addDonation"
-    >
-      <input
-        placeholder="Amount"
-        type="text"
-        v-model="amount"
+    <div class="uk-grid-small" uk-grid>
+      <form
+        class="order"
+        v-on:submit.prevent="addDonation"
       >
-
-      <button type="submit">
-        Proceed with payment
-      </button>
-    </form>
+        <input
+          class="uk-input"
+          placeholder="Amount"
+          type="text"
+          v-model="amount"
+        >
+        <button class="uk-button uk-button-primary" type="submit">
+          Proceed with payment
+        </button>
+      </form>
+  </div>
   </div>
 </template>
 
@@ -47,6 +49,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>
