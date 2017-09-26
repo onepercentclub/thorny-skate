@@ -29,6 +29,7 @@
 <style scoped lang="scss">
 .logo {
   max-width: 500px;
+  margin:0 auto;
   padding: 0 0 20px;
 }
 </style>

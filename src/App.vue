@@ -25,16 +25,24 @@ body {
 }
 
 .app {
-  text-align: center;
-  >div {
+  text-align: center;\
+
+  > div {
     overflow: hidden;
   }
 
 }
 
-
 .grid {
-  padding: 20px;
+  padding: 20px 50px;
 }
+
+@media (min-width: 1200px) {
+  .grid {
+    padding: 20px 250px;
+  }
+}
+
+
 
 </style>

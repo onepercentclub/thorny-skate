@@ -14,7 +14,7 @@
           v-model="amount"
         >
         <button class="uk-button uk-button-primary" type="submit">
-          Proceed with payment
+          Continue
         </button>
       </form>
   </div>
@@ -58,7 +58,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 .uk-input {
   height: 60px;
   font-size: 50px;
@@ -69,6 +68,11 @@ export default {
 .uk-button {
   margin: 20px auto;
   width: 100%;
+}
+
+.wallpaper {
+  background-image: url("https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg");
+
 }
 
 </style>

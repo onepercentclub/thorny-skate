@@ -45,4 +45,14 @@
   }
 }
 
+@media (min-width: 1200px) {
+  .uk-navbar-nav {
+    li {
+      a {
+        font-size: 0.975rem;
+      }
+    }
+  }
+}
+
 </style>
