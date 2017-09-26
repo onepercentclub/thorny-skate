@@ -72,11 +72,15 @@ body {
 }
 
 .grid {
-  padding: 20px 50px;
+  padding: 20px 20px;
 }
 
 .uk-card {
   background-color: rgba(255,255,255, .9);
+}
+
+.uk-card-body {
+  padding: 30px 10px;
 }
 
 @media (min-width: 1200px) {

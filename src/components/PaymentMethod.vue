@@ -16,7 +16,8 @@
       </div>
 
     </div>
-    <navBar></navBar>
+
+    <navBar :project="project"></navBar>
   </div>
 </template>
 

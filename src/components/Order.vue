@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <paper></paper>
     <div class="grid" uk-grid>
       <goodUp></goodUp>
@@ -26,7 +26,7 @@
         </button>
       </form>
   </div>
-  <navBar></navBar>
+  <navBar :project="project"></navBar>
 
   </div>
 </template>

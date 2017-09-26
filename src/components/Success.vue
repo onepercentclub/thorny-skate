@@ -5,17 +5,24 @@
       <goodUp></goodUp>
 
       <div v-if="order && project">
-        <h3>
-          We show a success page with confetti here because your donated €{{order.total.amount}}!
-        </h3>
 
-        <small>Show this screen to the vendor, we hope you're happy with your new stuff!</small>
+        <div class="uk-card uk-card uk-card-default uk-card-body">
+          <div class="uk-card-header">
+            <h3 class="uk-card-title">We show a success page with confetti here because your donated €{{order.total.amount}}!</h3>
+          </div>
+          <div class="uk-card-body"><p>Show this screen to the vendor, we hope you're happy with your new stuff!</p></div>
+          <div class="uk-card-footer">
+            €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
+            <div class="">
+                <router-link :to="{ path: 'project', query: { slug: project.id }}">Show project!</router-link>
+            </div>
+          </div>
 
-        <router-link :to="{ path: 'project', query: { slug: project.id }}">Show project!</router-link>
+        </div>
 
       </div>
     </div>
-    <navBar></navBar>
+    <navBar :project="project"></navBar>
 
   </div>
 </template>
@@ -62,11 +69,8 @@ export default {
 
 <style scoped lang="scss">
 
-canvas {
-  display: block;
-  position: relative;
-  zindex: 1;
-  pointer-events: none;
+.wallpaper {
+  background-image: url("http://www.planwallpaper.com/static/images/Mario-mario-wallpaper-hd-games-1920x1080.jpg");
 }
 
 </style>

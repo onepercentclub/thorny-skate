@@ -4,23 +4,29 @@
     <div class="uk-navbar-left">
 
         <ul class="uk-navbar-nav">
-            <li v-bind:class="{ active: uk-active }">
-              <a href="#/">Order</a>
+            <li>
+              <router-link :to="{ path: '/', query: { slug: project.id }}">Order</router-link>
+            </li>
+            <li class="no-action">
+              <router-link :to="{ path: '/paymentmethod', query: { slug: project.id }}">PaymentMethod</router-link>
+            </li>
+            <li class="no-action">
+              <router-link :to="{ path: '/success', query: { slug: project.id }}">Success</router-link>
             </li>
             <li>
-              <a href="#/paymentmethod">PaymentMethod</a>
-            </li>
-            <li>
-              <a href="#/success">Success</a>
-            </li>
-            <li>
-              <a href="#/project">Project</a>
+              <router-link :to="{ path: '/project', query: { slug: project.id }}">Project</router-link>
             </li>
         </ul>
 
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  props: ['project'],
+};
+</script>
 
 <style scoped lang="scss">
 
@@ -37,18 +43,41 @@
   li {
     flex: 1;
 
-    a {
+    a{
+      display: flex;
       height: 40px;
       padding: 0 10px;
       font-size: 0.675rem;
+      color: #999;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      text-decoration: none;
+      align-items: center;
+      justify-content: center;
+      transition-property: color, background-color;
+      text-transform: uppercase;
+
     }
   }
+}
+
+.no-action {
+  > * {
+    pointer-events: none;
+  }
+}
+
+.router-link-active {
+  color: green !important;
+}
+
+.router-link-exact-active {
+  text-decoration: underline !important;
 }
 
 @media (min-width: 1200px) {
   .uk-navbar-nav {
     li {
-      a {
+      a, span {
         font-size: 0.975rem;
       }
     }

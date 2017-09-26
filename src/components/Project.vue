@@ -1,5 +1,5 @@
 <template>
-<div class="">
+<div>
   <paper></paper>
   <div class="grid" uk-grid>
     <goodUp></goodUp>
@@ -12,7 +12,7 @@
         <div class="uk-card-footer">
           €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
           <div class="">
-              <router-link :to="{ path: '/', query: { slug: project.id }}">Donate!</router-link>
+              <router-link :to="{ path: '/paymentmethod', query: { slug: project.id }}">Donate!</router-link>
           </div>
         </div>
 
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <navBar></navBar>
+  <navBar :project="project"></navBar>
 
 </div>
 </template>
