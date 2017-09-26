@@ -17,6 +17,7 @@
 
 <script>
 import { postDonation } from '@/api';
+import router from '@/router';
 
 export default {
   data() {
@@ -26,8 +27,8 @@ export default {
   },
   methods: {
     addDonation() {
-      postDonation(this.amount).then((result) => {
-        console.log(result);
+      postDonation(this.amount).then(() => {
+        router.push('paymentmethod');
       }, (error) => {
         console.log(error);
       });

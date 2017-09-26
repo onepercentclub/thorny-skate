@@ -16,15 +16,12 @@ export const postDonation = amount => api.post('orders/my/').then((response) => 
       currency: 'EUR',
     },
     anonymous: true,
-    name: '',
     order,
     project: 'father-involvement-challenge',
   };
 
   // Post the donation
-  api.post('donations/my/', donation).then((result) => {
-    console.log(result);
-  });
+  return api.post('donations/my/', donation).then(result => result.data);
 });
 
 export default api;
