@@ -12,13 +12,20 @@
       <div v-if="project">
         <div class="card">
           <div class="card__header">
-            <h3 class="card__header--title">{{project.title}}</h3>
+            <h2 class="card__header--title">{{project.title}}</h2>
           </div>
-          <div class="card__pitch"><p v-html="project.pitch"></p></div>
+          <div class="card__pitch">
+            <arrow></arrow>
+            <p v-html="project.pitch"></p>
+          </div>
           <div class="card__footer">
             €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
             <div class="card__footer--action">
-                <router-link to="/">Donate!</router-link>
+              <router-link to="/">
+                <button type="button" name="button">
+                  Donate
+                </button>
+              </router-link>
             </div>
           </div>
         </div>
@@ -35,6 +42,7 @@ import { mapActions } from 'vuex';
 import wallpaper from '@/components/page-elements/Wallpaper';
 import navigationBar from '@/components/page-elements/Navigation-bar';
 import logo from '@/components/page-elements/Logo';
+import navigationArrow from '@/components/page-elements/Arrow';
 
 export default {
   beforeDestroy() {
@@ -74,6 +82,7 @@ export default {
   name: 'project',
 
   components: {
+    arrow: navigationArrow,
     navBar: navigationBar,
     paper: wallpaper,
     goodUp: logo,
@@ -83,7 +92,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~@/assets/style.scss';
+
 .wallpaper {
-    background-image: url("http://www.planwallpaper.com/static/images/cat-wallpaper-animals_GLl9liz.jpg");
+  background-image: url("http://www.planwallpaper.com/static/images/cat-wallpaper-animals_GLl9liz.jpg");
 }
+
+.arrow {
+  position: relative;
+  top: 50px;
+  left: 130px;
+
+}
+
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas id="canvas"></canvas>
+    <paper></paper>
 
     <div class="grid">
       <goodUp></goodUp>
@@ -14,8 +14,12 @@
           <div class="card__footer">
             €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
             <div class="card__footer--action">
-                <router-link :to="{ path: 'project', query: { slug: project.id }}">Show project!</router-link>
-            </div>
+                <router-link :to="{ path: 'project', query: { slug: project.id }}">
+                  <button type="button" name="button">
+                    Show project!
+                  </button>
+                </router-link>
+              </div>
           </div>
         </div>
       </div>
@@ -73,9 +77,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+canvas {
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+}
 
 .wallpaper {
   background-image: url("http://www.planwallpaper.com/static/images/Mario-mario-wallpaper-hd-games-1920x1080.jpg");
+}
+
+.card__footer--action {
+  margin: 20px auto;
 }
 
 </style>
