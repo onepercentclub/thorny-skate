@@ -11,6 +11,9 @@ export default {
 </script>
 
 <style lang="scss">
+$primary-color: #0097E2;
+$secondary-color: #281E50;
+
 html, body {
   width: 100% !important;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

@@ -10,13 +10,13 @@
       </div>
 
       <div v-if="project">
-        <h1>
-          {{project.title}}
-        </h1>
-
         <h2>
-          Select your amount:
+          {{project.title}}
         </h2>
+
+        <h3>
+          Select your amount:
+        </h3>
 
         <form
           class="order"
