@@ -34,7 +34,7 @@
   	pointer-events: none;
   	border-color: rgba(136, 183, 213, 0);
   	border-bottom-color: #fff;
-  	border-width: 8px;
+  	border-width: 7px;
   	margin-left: -10px;
     margin-bottom: 20px;
   }
@@ -50,8 +50,26 @@
   	pointer-events: none;
   	border-color: rgba(136, 183, 213, 0);
   	border-top-color: #fff;
-  	border-width: 8px;
+  	border-width: 7px;
   	margin-left: -10px;
+  }
+}
+
+@media (min-width: 500px) {
+  .arrow {
+    display: none;
+  }
+}
+
+@media (min-width: 1000px) {
+  .arrow {
+    &:before {
+    	border-width: 14px;
+    }
+
+    &:after {
+    	border-width: 14px;
+    }
   }
 }
 

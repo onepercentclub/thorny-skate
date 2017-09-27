@@ -117,16 +117,37 @@ button:active {
 
 .card__pitch {
   overflow-y: scroll;
+  overflow-x: hidden;
 
-  height: 120px;
+  height: 90px;
   margin: 20px auto;
 }
 
 .card__footer {
   margin: 20px auto;
 }
-@media (min-width: 1200px) {
+
+@media (min-width: 1000px) {
+  p {
+    padding: 0 50px;
+  }
+
+  body {
+    font-size: 1.5em;
+  }
+
+  input {
+    max-width: 150px;
+  }
+
   .grid {
-    padding: 20px 250px;
+    padding: 20px 120px;
+  }
+
+
+  .card__pitch {
+    overflow: auto;
+    overflow-x: hidden;
+    height: auto;
   }
 }

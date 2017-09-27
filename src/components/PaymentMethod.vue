@@ -78,6 +78,8 @@ export default {
 
 .selection {
   overflow-y: scroll;
+  overflow-x: hidden;
+
 
   height: 350px;
 
@@ -103,10 +105,9 @@ export default {
 
 
 .arrow {
-  position: relative;
-  top: 160px;
-  left: 120px;
-
+  position: fixed;
+  top: 55%;
+  right: 20px;
 }
 
 .card {
@@ -116,6 +117,16 @@ export default {
     margin: 0;
 
     font-size: 30px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .arrow {
+    left: 220px;
+  }
+
+  .selection__choices {
+    cursor: pointer;
   }
 }
 

@@ -99,10 +99,15 @@ export default {
 }
 
 .arrow {
-  position: relative;
-  top: 50px;
-  left: 130px;
+  position: fixed;
+  top: 55%;
+  right: 20px;
+}
 
+@media (min-width: 1000px) {
+  .arrow {
+    display: none;
+  }
 }
 
 </style>
