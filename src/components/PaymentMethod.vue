@@ -18,15 +18,18 @@
 import { postOrderPayment } from '@/api';
 import { getAuthorizationUrl } from '@/utils';
 import methods from '@/api/payment-methods';
+import router from '@/router';
 
 export default {
   computed: {
     donation() {
       return this.$store.state.donation;
     },
-    project() {
-      return this.$store.state.project;
-    },
+  },
+  created() {
+    if (!window.localStorage.getItem('slug')) {
+      router.push({ path: '/' });
+    }
   },
   data() {
     return {
@@ -39,7 +42,6 @@ export default {
         window.location = getAuthorizationUrl(
           response.authorization_action.url,
           this.donation.order,
-          this.donation.project,
         );
       });
     },

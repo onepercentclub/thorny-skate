@@ -1,23 +1,29 @@
 <template>
-  <form
-    class="order"
-    v-if="project"
-    v-on:submit.prevent="addDonation"
-  >
-    <h1>
-      {{project.title}}
-    </h1>
+  <div>
+    <div v-if="missingSlug">
+      Please submit a slug
+    </div>
 
-    <input
-      placeholder="Amount"
-      type="text"
-      v-model="amount"
+    <form
+      class="order"
+      v-if="project"
+      v-on:submit.prevent="addDonation"
     >
+      <h1>
+        {{project.title}}
+      </h1>
 
-    <button type="submit">
-      Proceed with payment
-    </button>
-  </form>
+      <input
+        placeholder="Amount"
+        type="text"
+        v-model="amount"
+      >
+
+      <button type="submit">
+        Proceed with payment
+      </button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -32,22 +38,28 @@ export default {
     project() {
       return this.$store.state.project;
     },
-    slug() {
-      return this.$route.query.slug;
-    },
   },
   created() {
-    this.getProject(this.slug);
+    this.slug = this.$route.query.slug || window.localStorage.getItem('slug');
+
+    if (this.slug) {
+      this.getProject(this.slug);
+      window.localStorage.setItem('slug', this.slug);
+    } else {
+      this.missingSlug = true;
+    }
   },
   data() {
     return {
       amount: 0,
+      missingSlug: false,
+      slug: null,
     };
   },
   methods: {
     addDonation() {
       this.postDonation({ amount: this.amount, slug: this.slug }).then(() => {
-        router.push({ path: 'paymentmethod' });
+        router.push({ path: '/paymentmethod' });
       }, (error) => {
         console.log(error);
       });

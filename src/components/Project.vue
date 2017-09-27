@@ -1,17 +1,23 @@
 <template>
-  <div v-if="project">
-    <h1>
-      {{project.title}}
-    </h1>
+  <div>
+    <div v-if="missingSlug">
+      Please submit a slug
+    </div>
 
-    <p v-html="project.pitch"></p>
+    <div v-if="project">
+      <h1>
+        {{project.title}}
+      </h1>
 
-    <!-- Make a chart / diagram of this -->
-    <h3>
-      €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
-    </h3>
+      <p v-html="project.pitch"></p>
 
-    <router-link :to="{ path: '/', query: { slug: project.id }}">Donate!</router-link>
+      <!-- Make a chart / diagram of this -->
+      <h3>
+        €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
+      </h3>
+
+      <router-link :to="{ path: '/'}">Donate!</router-link>
+    </div>
   </div>
 </template>
 
@@ -30,7 +36,14 @@ export default {
     },
   },
   created() {
-    this.getProject(this.$route.query.slug);
+    this.slug = this.$route.query.slug;
+
+    if (this.slug) {
+      this.getProject(this.slug);
+      window.localStorage.setItem('slug', this.slug);
+    } else {
+      this.missingSlug = true;
+    }
 
     // Get the latest data every 30 seconds
     this.interval = setInterval(() => this.getProject(this.$route.query.slug), 30000);
@@ -38,6 +51,7 @@ export default {
   data() {
     return {
       interval: null,
+      missingSlug: false,
     };
   },
   methods: {

@@ -12,6 +12,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import router from '@/router';
 
 export default {
   computed: {
@@ -23,8 +24,14 @@ export default {
     },
   },
   created() {
-    this.getProject(this.$route.query.slug);
-    this.getOrder(this.$route.query.order);
+    const slug = window.localStorage.getItem('slug');
+
+    if (slug) {
+      this.getProject(slug);
+      this.getOrder(this.$route.query.order);
+    } else {
+      router.push({ path: '/' });
+    }
   },
   methods: {
     ...mapActions([
