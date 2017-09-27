@@ -11,7 +11,9 @@
         <div class="uk-card-header">
           <h3 class="uk-card-title">{{project.title}}</h3>
         </div>
-        <div class="uk-card-body"><p v-html="project.pitch"></p></div>
+        <div class="uk-card-body">
+          <p v-html="project.pitch"></p>
+        </div>
         <div class="uk-card-footer">
           €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
           <div class="">

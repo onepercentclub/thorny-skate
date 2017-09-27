@@ -3,21 +3,19 @@
     <paper></paper>
     <div class="grid" uk-grid>
       <goodUp></goodUp>
-      <h2>
+      <h3>
         Select your bank:
-      </h2>
+      </h3>
       <div class="selection">
         <div v-for="method in methods" >
           <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m" v-on:click="selectMethod(method.value)">
             <h3 class="uk-card-title">{{method.label}}</h3>
           </div>
         </div>
-
       </div>
-
     </div>
-
     <navBar :project="project"></navBar>
+
   </div>
 </template>
 
