@@ -3,6 +3,11 @@
     <paper></paper>
     <div class="grid" uk-grid>
       <goodUp></goodUp>
+
+      <div v-if="missingSlug">
+        Please submit a slug
+      </div>
+
       <h1>
         {{project.title}}
       </h1>
@@ -46,22 +51,28 @@ export default {
     project() {
       return this.$store.state.project;
     },
-    slug() {
-      return this.$route.query.slug;
-    },
   },
   created() {
-    this.getProject(this.slug);
+    this.slug = this.$route.query.slug || window.localStorage.getItem('slug');
+
+    if (this.slug) {
+      this.getProject(this.slug);
+      window.localStorage.setItem('slug', this.slug);
+    } else {
+      this.missingSlug = true;
+    }
   },
   data() {
     return {
       amount: 0,
+      missingSlug: false,
+      slug: null,
     };
   },
   methods: {
     addDonation() {
       this.postDonation({ amount: this.amount, slug: this.slug }).then(() => {
-        router.push({ path: 'paymentmethod' });
+        router.push({ path: '/paymentmethod' });
       }, (error) => {
         console.log(error);
       });

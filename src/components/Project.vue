@@ -3,6 +3,9 @@
   <paper></paper>
   <div class="grid" uk-grid>
     <goodUp></goodUp>
+    <div v-if="missingSlug">
+      Please submit a slug
+    </div>
     <div v-if="project">
       <div class="uk-card uk-card uk-card-default uk-card-body">
         <div class="uk-card-header">
@@ -45,7 +48,14 @@ export default {
     },
   },
   created() {
-    this.getProject(this.$route.query.slug);
+    this.slug = this.$route.query.slug;
+
+    if (this.slug) {
+      this.getProject(this.slug);
+      window.localStorage.setItem('slug', this.slug);
+    } else {
+      this.missingSlug = true;
+    }
 
     // Get the latest data every 30 seconds
     this.interval = setInterval(() => this.getProject(this.$route.query.slug), 30000);
@@ -53,6 +63,7 @@ export default {
   data() {
     return {
       interval: null,
+      missingSlug: false,
     };
   },
   methods: {

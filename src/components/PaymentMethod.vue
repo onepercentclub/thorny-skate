@@ -25,6 +25,7 @@
 import { postOrderPayment } from '@/api';
 import { getAuthorizationUrl } from '@/utils';
 import methods from '@/api/payment-methods';
+import router from '@/router';
 import wallpaper from '@/components/page-elements/Wallpaper';
 import navigationBar from '@/components/page-elements/Navigation-bar';
 import logo from '@/components/page-elements/Logo';
@@ -34,9 +35,11 @@ export default {
     donation() {
       return this.$store.state.donation;
     },
-    project() {
-      return this.$store.state.project;
-    },
+  },
+  created() {
+    if (!window.localStorage.getItem('slug')) {
+      router.push({ path: '/' });
+    }
   },
   data() {
     return {
@@ -49,7 +52,6 @@ export default {
         window.location = getAuthorizationUrl(
           response.authorization_action.url,
           this.donation.order,
-          this.donation.project,
         );
       });
     },

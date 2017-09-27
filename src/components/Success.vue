@@ -29,6 +29,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import router from '@/router';
 
 import wallpaper from '@/components/page-elements/Wallpaper';
 import navigationBar from '@/components/page-elements/Navigation-bar';
@@ -45,8 +46,14 @@ export default {
   },
 
   created() {
-    this.getProject(this.$route.query.slug);
-    this.getOrder(this.$route.query.order);
+    const slug = window.localStorage.getItem('slug');
+
+    if (slug) {
+      this.getProject(slug);
+      this.getOrder(this.$route.query.order);
+    } else {
+      router.push({ path: '/' });
+    }
   },
 
   methods: {
