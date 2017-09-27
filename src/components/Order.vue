@@ -2,7 +2,7 @@
   <div>
     <paper></paper>
 
-    <div class="grid" uk-grid>
+    <div class="grid">
       <goodUp></goodUp>
 
       <div v-if="missingSlug">
@@ -29,7 +29,7 @@
             v-model="amount"
           >
 
-          <button class="uk-button uk-button-primary" type="submit">
+          <button class="" type="submit">
             Continue
           </button>
         </form>
@@ -98,7 +98,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.uk-input {
+input {
   height: 60px;
   font-size: 50px;
   background-color: rgba(255,255,255, .8);
@@ -106,7 +106,7 @@ export default {
   margin: 50px auto;
 }
 
-.uk-button {
+button {
   margin: 20px auto;
   width: 100%;
 }

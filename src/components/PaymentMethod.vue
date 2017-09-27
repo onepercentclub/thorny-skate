@@ -2,15 +2,15 @@
   <div>
     <paper></paper>
 
-    <div class="grid" uk-grid>
+    <div class="grid">
       <goodUp></goodUp>
       <h3>
         Select your bank:
       </h3>
       <div class="selection">
         <div v-for="method in methods" >
-          <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m" v-on:click="selectMethod(method.value)">
-            <h3 class="uk-card-title">{{method.label}}</h3>
+          <div class="" v-on:click="selectMethod(method.value)">
+            <h3 class="">{{method.label}}</h3>
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default {
   overflow-y: scroll;
 }
 
-.uk-card {
+.card {
   margin: 50px auto;
 
   h3 {

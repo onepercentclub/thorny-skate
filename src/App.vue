@@ -59,31 +59,24 @@ small, .font_small {
   font-size: 0.618em !important;
 }
 
-html {
-}
-
-body {
-}
-
 .app {
-  text-align: center;\
+  text-align: center;
 
   > div {
-    overflow: hidden;
+  overflow: hidden;
   }
-
 }
 
 .grid {
   padding: 20px 20px;
 }
 
-.uk-card {
+.card {
   background-color: rgba(255,255,255, .9);
 }
 
-.uk-card-body {
-  padding: 30px 10px;
+.card {
+  padding: 20px 10px;
 }
 
 @media (min-width: 1200px) {

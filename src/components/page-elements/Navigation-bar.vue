@@ -1,36 +1,35 @@
 <template>
-  <nav class="uk-navbar-container" uk-navbar>
-    <div class="uk-navbar-left">
-      <ul class="uk-navbar-nav">
-        <li>
-          <router-link to="/">Order</router-link>
-        </li>
+  <nav class="nav-container">
+    <ul class="nav-container__list">
+      <li>
+        <router-link to="/">Order</router-link>
+      </li>
 
-        <li class="no-action">
-          <router-link to="/paymentmethod">PaymentMethod</router-link>
-        </li>
+      <li class="no-action">
+        <router-link to="/paymentmethod">PaymentMethod</router-link>
+      </li>
 
-        <li class="no-action">
-          <router-link to="/success">Success</router-link>
-        </li>
+      <li class="no-action">
+        <router-link to="/success">Success</router-link>
+      </li>
 
-        <li>
-          <router-link to="/project">Project</router-link>
-        </li>
-      </ul>
-    </div>
+      <li>
+        <router-link to="/project">Project</router-link>
+      </li>
+    </ul>
   </nav>
 </template>
 
 <style scoped lang="scss">
-.uk-navbar-container {
+.nav-container {
+  background: $primary-color;
   overflow: auto;
   position: fixed;
   bottom: 0;
   width: 100%;
 }
 
-.uk-navbar-nav {
+nav {
   width: 100%;
 
   li {

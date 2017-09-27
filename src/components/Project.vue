@@ -2,7 +2,7 @@
   <div>
     <paper></paper>
 
-    <div class="grid" uk-grid>
+    <div class="grid">
       <goodUp></goodUp>
 
       <div v-if="missingSlug">
@@ -10,14 +10,14 @@
       </div>
 
       <div v-if="project">
-        <div class="uk-card uk-card uk-card-default uk-card-body">
-          <div class="uk-card-header">
-            <h3 class="uk-card-title">{{project.title}}</h3>
+        <div class="card">
+          <div class="card__header">
+            <h3 class="card__header--title">{{project.title}}</h3>
           </div>
-          <div class="uk-card-body"><p v-html="project.pitch"></p></div>
-          <div class="uk-card-footer">
+          <div class="card__pitch"><p v-html="project.pitch"></p></div>
+          <div class="card__footer">
             €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
-            <div class="">
+            <div class="card__footer--action">
                 <router-link to="/">Donate!</router-link>
             </div>
           </div>
