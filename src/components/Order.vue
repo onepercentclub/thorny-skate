@@ -1,6 +1,7 @@
 <template>
   <div>
     <paper></paper>
+
     <div class="grid" uk-grid>
       <goodUp></goodUp>
 
@@ -8,31 +9,34 @@
         Please submit a slug
       </div>
 
-      <h1>
-        {{project.title}}
-      </h1>
+      <div v-if="project">
+        <h1>
+          {{project.title}}
+        </h1>
 
-      <h2>
-        Select your amount:
-      </h2>
-      <form
-        class="order"
-        v-on:submit.prevent="addDonation"
-        v-if="project"
-      >
-        <input
-          class="uk-input"
-          placeholder="Amount"
-          type="text"
-          v-model="amount"
+        <h2>
+          Select your amount:
+        </h2>
+
+        <form
+          class="order"
+          v-on:submit.prevent="addDonation"
         >
-        <button class="uk-button uk-button-primary" type="submit">
-          Continue
-        </button>
-      </form>
-  </div>
-  <navBar :project="project"></navBar>
+          <input
+            class="uk-input"
+            placeholder="Amount"
+            type="text"
+            v-model="amount"
+          >
 
+          <button class="uk-button uk-button-primary" type="submit">
+            Continue
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <navBar></navBar>
   </div>
 </template>
 
@@ -86,10 +90,9 @@ export default {
   name: 'order',
 
   components: {
+    goodUp: logo,
     navBar: navigationBar,
     paper: wallpaper,
-    goodUp: logo,
-
   },
 };
 </script>
@@ -110,7 +113,5 @@ export default {
 
 .wallpaper {
   background-image: url("https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg");
-
 }
-
 </style>

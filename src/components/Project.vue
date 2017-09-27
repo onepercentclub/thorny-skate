@@ -1,32 +1,32 @@
 <template>
-<div>
-  <paper></paper>
-  <div class="grid" uk-grid>
-    <goodUp></goodUp>
-    <div v-if="missingSlug">
-      Please submit a slug
-    </div>
-    <div v-if="project">
-      <div class="uk-card uk-card uk-card-default uk-card-body">
-        <div class="uk-card-header">
-          <h3 class="uk-card-title">{{project.title}}</h3>
-        </div>
-        <div class="uk-card-body"><p v-html="project.pitch"></p></div>
-        <div class="uk-card-footer">
-          €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
-          <div class="">
-              <router-link :to="{ path: '/paymentmethod', query: { slug: project.id }}">Donate!</router-link>
-          </div>
-        </div>
+  <div>
+    <paper></paper>
 
+    <div class="grid" uk-grid>
+      <goodUp></goodUp>
+
+      <div v-if="missingSlug">
+        Please submit a slug
       </div>
 
+      <div v-if="project">
+        <div class="uk-card uk-card uk-card-default uk-card-body">
+          <div class="uk-card-header">
+            <h3 class="uk-card-title">{{project.title}}</h3>
+          </div>
+          <div class="uk-card-body"><p v-html="project.pitch"></p></div>
+          <div class="uk-card-footer">
+            €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
+            <div class="">
+                <router-link to="/">Donate!</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <navBar></navBar>
   </div>
-
-  <navBar :project="project"></navBar>
-
-</div>
 </template>
 
 <script>
@@ -48,7 +48,7 @@ export default {
     },
   },
   created() {
-    this.slug = this.$route.query.slug;
+    this.slug = this.$route.query.slug || window.localStorage.getItem('slug');
 
     if (this.slug) {
       this.getProject(this.slug);

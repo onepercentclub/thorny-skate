@@ -1,35 +1,28 @@
 <template>
-
   <nav class="uk-navbar-container" uk-navbar>
     <div class="uk-navbar-left">
+      <ul class="uk-navbar-nav">
+        <li>
+          <router-link to="/">Order</router-link>
+        </li>
 
-        <ul class="uk-navbar-nav">
-            <li>
-              <router-link :to="{ path: '/', query: { slug: project.id }}">Order</router-link>
-            </li>
-            <li class="no-action">
-              <router-link :to="{ path: '/paymentmethod', query: { slug: project.id }}">PaymentMethod</router-link>
-            </li>
-            <li class="no-action">
-              <router-link :to="{ path: '/success', query: { slug: project.id }}">Success</router-link>
-            </li>
-            <li>
-              <router-link :to="{ path: '/project', query: { slug: project.id }}">Project</router-link>
-            </li>
-        </ul>
+        <li class="no-action">
+          <router-link to="/paymentmethod">PaymentMethod</router-link>
+        </li>
 
+        <li class="no-action">
+          <router-link to="/success">Success</router-link>
+        </li>
+
+        <li>
+          <router-link to="/project">Project</router-link>
+        </li>
+      </ul>
     </div>
   </nav>
 </template>
 
-<script>
-export default {
-  props: ['project'],
-};
-</script>
-
 <style scoped lang="scss">
-
 .uk-navbar-container {
   overflow: auto;
   position: fixed;
@@ -83,5 +76,4 @@ export default {
     }
   }
 }
-
 </style>

@@ -1,5 +1,5 @@
 <template>
-<div class="wallpaper"></div>
+  <div class="wallpaper"></div>
 </template>
 
 <style scoped lang="scss">

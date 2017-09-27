@@ -1,11 +1,11 @@
 <template>
-  <div class="">
+  <div>
     <canvas id="canvas"></canvas>
+
     <div class="grid" uk-grid>
       <goodUp></goodUp>
 
       <div v-if="order && project">
-
         <div class="uk-card uk-card uk-card-default uk-card-body">
           <div class="uk-card-header">
             <h3 class="uk-card-title">We show a success page with confetti here because your donated €{{order.total.amount}}!</h3>
@@ -17,13 +17,11 @@
                 <router-link :to="{ path: 'project', query: { slug: project.id }}">Show project!</router-link>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
-    <navBar :project="project"></navBar>
 
+    <navBar></navBar>
   </div>
 </template>
 
