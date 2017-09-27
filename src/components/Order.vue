@@ -1,34 +1,51 @@
 <template>
   <div>
-    <div v-if="missingSlug">
-      Please submit a slug
+    <paper></paper>
+
+    <div class="grid" uk-grid>
+      <goodUp></goodUp>
+
+      <div v-if="missingSlug">
+        Please submit a slug
+      </div>
+
+      <div v-if="project">
+        <h2>
+          {{project.title}}
+        </h2>
+
+        <h3>
+          Select your amount:
+        </h3>
+
+        <form
+          class="order"
+          v-on:submit.prevent="addDonation"
+        >
+          <input
+            class="uk-input"
+            placeholder="Amount"
+            type="text"
+            v-model="amount"
+          >
+
+          <button class="uk-button uk-button-primary" type="submit">
+            Continue
+          </button>
+        </form>
+      </div>
     </div>
 
-    <form
-      class="order"
-      v-if="project"
-      v-on:submit.prevent="addDonation"
-    >
-      <h1>
-        {{project.title}}
-      </h1>
-
-      <input
-        placeholder="Amount"
-        type="text"
-        v-model="amount"
-      >
-
-      <button type="submit">
-        Proceed with payment
-      </button>
-    </form>
+    <navBar></navBar>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import router from '@/router';
+import navigationBar from '@/components/page-elements/Navigation-bar';
+import wallpaper from '@/components/page-elements/Wallpaper';
+import logo from '@/components/page-elements/Logo';
 
 export default {
   computed: {
@@ -69,10 +86,32 @@ export default {
       'postDonation',
     ]),
   },
+
   name: 'order',
+
+  components: {
+    goodUp: logo,
+    navBar: navigationBar,
+    paper: wallpaper,
+  },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.uk-input {
+  height: 60px;
+  font-size: 50px;
+  background-color: rgba(255,255,255, .8);
+  text-align: center;
+  margin: 50px auto;
+}
 
+.uk-button {
+  margin: 20px auto;
+  width: 100%;
+}
+
+.wallpaper {
+  background-image: url("https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg");
+}
 </style>
