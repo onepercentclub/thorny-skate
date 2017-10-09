@@ -1,6 +1,6 @@
 <template>
 <div class="logo">
-  <svg width="100%" height="140px" viewBox="0 0 100 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <svg width="100%" height="70px" viewBox="0 0 100 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
       <title>Group</title>
       <desc>Created with Sketch.</desc>
@@ -28,8 +28,7 @@
 
 <style scoped lang="scss">
 .logo {
-  max-width: 500px;
-  margin:50px auto;
-  padding: 0 0 20px;
+  max-width: 200px;
+  margin: 20px auto;
 }
 </style>

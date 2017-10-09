@@ -2,7 +2,7 @@
   <div>
     <paper></paper>
 
-    <div class="grid" uk-grid>
+    <div class="grid">
       <goodUp></goodUp>
 
       <div v-if="missingSlug">
@@ -14,9 +14,9 @@
           {{project.title}}
         </h2>
 
-        <h3>
+        <h5>
           Select your amount:
-        </h3>
+        </h5>
 
         <form
           class="order"
@@ -29,7 +29,7 @@
             v-model="amount"
           >
 
-          <button class="uk-button uk-button-primary" type="submit">
+          <button class="" type="submit">
             Continue
           </button>
         </form>
@@ -98,20 +98,39 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.uk-input {
-  height: 60px;
-  font-size: 50px;
-  background-color: rgba(255,255,255, .8);
-  text-align: center;
-  margin: 50px auto;
-}
+@import '~@/assets/style.scss';
 
-.uk-button {
-  margin: 20px auto;
+
+input {
+  display: block;
+
   width: 100%;
+  height: 30px;
+  margin: 20px auto;
+  padding: 5px;
+
+  transition: all 0.3s ease-out;
+  text-align: center;
+
+  color: #555;
+  border: 1px solid darken($primary-color, 5%);
+  border-radius: 5px;
+  background: linear-gradient(#eee, #fff);
+
+  font-size: 20px;
+
+  outline: none;
+
+  &focus {
+    outline: none;
+    background-position: 0 -1.7em;
+  }
+
 }
 
 .wallpaper {
   background-image: url("https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg");
+
 }
+
 </style>
