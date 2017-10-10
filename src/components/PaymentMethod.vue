@@ -27,8 +27,7 @@
 
         <div class="donation">
           <h4>Donation</h4>
-          <!--<h5>{{order.total.amount}}</h5>-->
-          <h5>10</h5>
+          <h5>{{donation.amount.amount}}</h5>
         </div>
 
       </div>
@@ -37,7 +36,6 @@
       <mySwiper></mySwiper>
 
       <goodUp></goodUp>
-
     </div>
   </div>
 </template>
