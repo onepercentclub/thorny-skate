@@ -31,10 +31,26 @@
             v-model="amount"
           >
         </div>
-          <div class="order__buttons">
-          <span class="buttons__increase">-1</span>
-          <span class="buttons__decrease">+1</span>
+
+        <div class="order__buttons">
+          <span
+            class="buttons__decrease"
+            role="button"
+            v-if="amount"
+            v-on:click="changeAmount(-10)"
+          >
+            -1
+          </span>
+
+          <span
+            class="buttons__increase"
+            role="button"
+            v-on:click="changeAmount(+10)"
+          >
+            +1
+          </span>
         </div>
+
         <div class="order__continue">
           <button class="button" type="submit">
             Continue
@@ -91,6 +107,9 @@ export default {
       }, (error) => {
         console.log(error);
       });
+    },
+    changeAmount(amount) {
+      this.amount = this.amount + amount;
     },
     ...mapActions([
       'getProject',

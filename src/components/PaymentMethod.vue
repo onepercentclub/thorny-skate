@@ -27,22 +27,25 @@
 
         <div class="donation">
           <h4>Donation</h4>
-          <!--<h5>{{order.total.amount}}</h5>-->
-          <h5>10</h5>
+          <h5>{{donation.amount.amount}}</h5>
         </div>
 
       </div>
       <h4>Payment method</h4>
       <div class="selection">
 
-        <div class="selection__choice" v-for="method in methods" >
+        <div
+          class="selection__choice"
+          v-bind:key="method.value"
+          v-for="method in methods"
+        >
           <div class="" v-on:click="selectMethod(method.value)">
             <h5 class="">{{method.label}}</h5>
           </div>
         </div>
       </div>
-      <goodUp></goodUp>
 
+      <goodUp></goodUp>
     </div>
   </div>
 </template>
