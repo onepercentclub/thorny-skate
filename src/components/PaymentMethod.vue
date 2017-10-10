@@ -2,21 +2,48 @@
   <div>
     <paper></paper>
 
+    <div v-if="missingSlug">
+      Please submit a slug
+    </div>
+
     <div class="grid">
-      <goodUp></goodUp>
-      <h3>
-        Select your bank:
+      <h2 v-if="customTitle">
+        {{customTitle}}
+      </h2>
+
+      <h2 v-else>
+        {{project.title}}
+      </h2>
+
+      <h3 v-if="customSubtitle">
+        {{customSubtitle}}
       </h3>
+
+      <div class="info">
+        <div class="project">
+          <h4>For project</h4>
+          <h5>ProjectTitle</h5>
+        </div>
+
+        <div class="donation">
+          <h4>Donation</h4>
+          <!--<h5>{{order.total.amount}}</h5>-->
+          <h5>10</h5>
+        </div>
+
+      </div>
+      <h4>Payment method</h4>
       <div class="selection">
-        <arrow></arrow>
-        <div class="selection__choices" v-for="method in methods" >
+
+        <div class="selection__choice" v-for="method in methods" >
           <div class="" v-on:click="selectMethod(method.value)">
             <h5 class="">{{method.label}}</h5>
           </div>
         </div>
       </div>
+      <goodUp></goodUp>
+
     </div>
-    <navBar></navBar>
   </div>
 </template>
 
@@ -26,8 +53,6 @@ import { getAuthorizationUrl } from '@/utils';
 import methods from '@/api/payment-methods';
 import router from '@/router';
 import wallpaper from '@/components/page-elements/Wallpaper';
-import navigationBar from '@/components/page-elements/Navigation-bar';
-import navigationArrow from '@/components/page-elements/Arrow';
 import logo from '@/components/page-elements/Logo';
 
 export default {
@@ -43,6 +68,9 @@ export default {
   },
   data() {
     return {
+      customTitle: 'Supermercado!',
+      customSubtitle: 'Choose your bank',
+
       methods,
     };
   },
@@ -59,8 +87,6 @@ export default {
   name: 'paymentMethod',
 
   components: {
-    arrow: navigationArrow,
-    navBar: navigationBar,
     paper: wallpaper,
     goodUp: logo,
   },
@@ -73,41 +99,46 @@ export default {
 
 
 .wallpaper {
-  background-image: url("http://www.planwallpaper.com/static/images/cat-wallpaper-animals_GLl9liz.jpg");
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  flex: 0.5;
 }
 
 .selection {
-  overflow-y: scroll;
-  overflow-x: hidden;
+  display: flex;
+  flex: 1;
+  overflow-x: scroll;
 
+  .selection__choice {
+    height: 90px;
+    min-width: 70%;
+    margin: 0 20px;
+    border: 0;
+    border-radius: 8px;
+    background-color: rgba(47,187,169,1);
 
-  height: 350px;
+    &:focus {
+      border: 2px solid rgba(255,180,0,1);
+      outline: none;
+    }
 
-  .selection__choices {
-    margin: 30px auto;
-
-    &:after {
-      position: relative;
-      top: 15px;
-
-      display: block;
-
-      width: 70%;
-      height: 1px;
-      margin: 0 auto;
-
-      content: '';
-
-      background-color: $white;
+    > div {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
 
-
-.arrow {
-  position: fixed;
-  top: 55%;
-  right: 20px;
+h4 {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 
 .card {
@@ -121,10 +152,6 @@ export default {
 }
 
 @media (min-width: 1000px) {
-  .arrow {
-    left: 220px;
-  }
-
   .selection__choices {
     cursor: pointer;
   }

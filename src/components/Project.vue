@@ -31,8 +31,6 @@
         </div>
       </div>
     </div>
-
-    <navBar></navBar>
   </div>
 </template>
 
@@ -40,9 +38,7 @@
 import { mapActions } from 'vuex';
 
 import wallpaper from '@/components/page-elements/Wallpaper';
-import navigationBar from '@/components/page-elements/Navigation-bar';
 import logo from '@/components/page-elements/Logo';
-import navigationArrow from '@/components/page-elements/Arrow';
 
 export default {
   beforeDestroy() {
@@ -82,8 +78,6 @@ export default {
   name: 'project',
 
   components: {
-    arrow: navigationArrow,
-    navBar: navigationBar,
     paper: wallpaper,
     goodUp: logo,
   },

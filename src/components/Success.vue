@@ -24,8 +24,6 @@
         </div>
       </div>
     </div>
-
-    <navBar></navBar>
   </div>
 </template>
 
@@ -34,7 +32,6 @@ import { mapActions } from 'vuex';
 import router from '@/router';
 
 import wallpaper from '@/components/page-elements/Wallpaper';
-import navigationBar from '@/components/page-elements/Navigation-bar';
 import logo from '@/components/page-elements/Logo';
 
 export default {
@@ -68,7 +65,6 @@ export default {
   name: 'success',
 
   components: {
-    navBar: navigationBar,
     paper: wallpaper,
     goodUp: logo,
   },
@@ -86,7 +82,6 @@ canvas {
 }
 
 .wallpaper {
-  background-image: url("http://www.planwallpaper.com/static/images/Mario-mario-wallpaper-hd-games-1920x1080.jpg");
 }
 
 .card__footer--action {

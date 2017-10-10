@@ -2,53 +2,62 @@
   <div>
     <paper></paper>
 
-    <div class="grid">
-      <goodUp></goodUp>
+    <div v-if="missingSlug">
+      Please submit a slug
+    </div>
 
-      <div v-if="missingSlug">
-        Please submit a slug
-      </div>
+    <div class="grid" v-if="project">
+      <h2 v-if="customTitle">
+        {{customTitle}}
+      </h2>
 
-      <div v-if="project">
-        <h2>
-          {{project.title}}
-        </h2>
+      <h2 v-else>
+        {{project.title}}
+      </h2>
 
-        <h5>
-          Select your amount:
-        </h5>
+      <h3 v-if="customSubtitle">
+        {{customSubtitle}}
+      </h3>
 
-        <form
-          class="order"
-          v-on:submit.prevent="addDonation"
-        >
+      <form
+        class="order"
+        v-on:submit.prevent="addDonation"
+      >
+        <div class="order__input">
           <input
-            class="uk-input"
+            class="order__input"
             placeholder="Amount"
             type="text"
             v-model="amount"
           >
-
-          <button class="" type="submit">
+        </div>
+          <div class="order__buttons">
+          <span class="buttons__increase">-1</span>
+          <span class="buttons__decrease">+1</span>
+        </div>
+        <div class="order__continue">
+          <button class="button" type="submit">
             Continue
           </button>
-        </form>
-      </div>
-    </div>
 
-    <navBar></navBar>
+        </div>
+
+      </form>
+      <pageLogo></pageLogo>
+
+    </div>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import router from '@/router';
-import navigationBar from '@/components/page-elements/Navigation-bar';
 import wallpaper from '@/components/page-elements/Wallpaper';
 import logo from '@/components/page-elements/Logo';
 
 export default {
   computed: {
+
     donation() {
       return this.$store.state.donation;
     },
@@ -68,6 +77,8 @@ export default {
   },
   data() {
     return {
+      customTitle: 'Supermercado!',
+      customSubtitle: 'Buy your bonus card',
       amount: 0,
       missingSlug: false,
       slug: null,
@@ -90,8 +101,7 @@ export default {
   name: 'order',
 
   components: {
-    goodUp: logo,
-    navBar: navigationBar,
+    pageLogo: logo,
     paper: wallpaper,
   },
 };
@@ -100,36 +110,61 @@ export default {
 <style scoped lang="scss">
 @import '~@/assets/style.scss';
 
+.order {
 
-input {
-  display: block;
+  .order__input {
+    flex: 1;
+    display: flex;
 
-  width: 100%;
-  height: 30px;
-  margin: 20px auto;
-  padding: 5px;
 
-  transition: all 0.3s ease-out;
-  text-align: center;
+    input {
+      display: block;
 
-  color: #555;
-  border: 1px solid darken($primary-color, 5%);
-  border-radius: 5px;
-  background: linear-gradient(#eee, #fff);
+      width: 100%;
+      padding: 5px;
 
-  font-size: 20px;
+      transition: all 0.3s ease-out;
+      text-align: center;
 
-  outline: none;
+      color: #555;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0);
+      border: 0;
 
-  &focus {
-    outline: none;
-    background-position: 0 -1.7em;
+      font-size: 20px;
+
+      outline: none;
+
+      &focus {
+        outline: none;
+        background-position: 0 -1.7em;
+      }
+    }
   }
 
-}
+  .order__buttons {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-.wallpaper {
-  background-image: url("https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg");
+    span {
+      border-radius: 50% 50%;
+      display: inline-block;
+      background-color: #E47872;
+      padding: 15px;
+      width: 25px;
+      height: 25px;
+      margin: 0 10px;
+
+    }
+  }
+
+  .order__continue {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
 
 }
 
