@@ -32,18 +32,8 @@
 
       </div>
       <h4>Payment method</h4>
-      <div class="selection">
 
-        <div
-          class="selection__choice"
-          v-bind:key="method.value"
-          v-for="method in methods"
-        >
-          <div class="" v-on:click="selectMethod(method.value)">
-            <h5 class="">{{method.label}}</h5>
-          </div>
-        </div>
-      </div>
+      <mySwiper></mySwiper>
 
       <goodUp></goodUp>
     </div>
@@ -57,6 +47,8 @@ import methods from '@/api/payment-methods';
 import router from '@/router';
 import wallpaper from '@/components/page-elements/Wallpaper';
 import logo from '@/components/page-elements/Logo';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
+import bankSwiper from '@/components/page-elements/Bank-swiper';
 
 export default {
   computed: {
@@ -92,6 +84,9 @@ export default {
   components: {
     paper: wallpaper,
     goodUp: logo,
+    mySwiper: bankSwiper,
+    swiper,
+    swiperSlide,
   },
 
 };
