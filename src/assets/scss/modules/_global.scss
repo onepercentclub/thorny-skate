@@ -131,7 +131,19 @@ button, input {
   }
 
   .top {
-    top: 0;
+    top: 50px;
+
+    .top__image--container {
+      overflow: hidden;
+      height: 160px;
+      width: 160px;
+      border-radius: 50%;
+      background-image: url('assets/images/0.png');
+      background-position: -50px -70px;
+      background-size: 250px 350px;
+      background-repeat: no-repeat;
+
+    }
   }
 
   .bottom {

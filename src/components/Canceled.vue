@@ -4,10 +4,22 @@
 
     <div class="grid">
       <div v-if="order && project">
-        <div class="card">
-          <div class="card__header">
-            <h3 class="card__header--title">Your transaction was declined</h3>
+        <div class="top">
+          <div class="top__image--container">
           </div>
+        </div>
+        <div class="main">
+          <h2>Your transaction was declined</h2>
+        </div>
+
+        <div class="bottom">
+          <div class="order__continue">
+            <button class="button" type="submit">
+              Back to Payment
+            </button>
+          </div>
+
+          <goodUp></goodUp>
         </div>
       </div>
 

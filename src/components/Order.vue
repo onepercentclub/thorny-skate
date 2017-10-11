@@ -211,7 +211,7 @@ export default {
       padding: 15px;
       width: 25px;
       height: 25px;
-      margin: 0 10px;
+      margin: 0 20px;
       font-size: 20px;
 
       &:nth-child(2) {
@@ -219,14 +219,13 @@ export default {
           content: '';
           display: block;
           position: relative;
-          height: 40px;
-          width: 2px;
-          top: -30px;
-          left: -25px;
+          height: 50px;
+          width: 3px;
+          top: -40px;
+          left: -35px;
           background-color: white;
         }
       }
-
     }
   }
 
