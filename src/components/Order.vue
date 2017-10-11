@@ -7,20 +7,22 @@
     </div>
 
     <div class="grid" v-if="project">
-      <h2 v-if="customTitle">
-        {{customTitle}}
-      </h2>
+      <div class="top">
+        <h2 v-if="customTitle">
+          {{customTitle}}
+        </h2>
 
-      <h2 v-else>
-        {{project.title}}
-      </h2>
+        <h2 v-else>
+          {{project.title}}
+        </h2>
 
-      <h3 v-if="customSubtitle">
-        {{customSubtitle}}
-      </h3>
+        <h3 v-if="customSubtitle">
+          {{customSubtitle}}
+        </h3>
+      </div>
 
       <form
-        class="order"
+        class="main"
         v-on:submit.prevent="addDonation"
       >
         <div class="order__input">
@@ -51,15 +53,18 @@
           </span>
         </div>
 
-        <div class="order__continue">
-          <button class="button" type="submit">
-            Continue
-          </button>
-
+        <div class="bottom">
+          <div class="order__continue">
+            <button class="button" type="submit">
+              Continue
+            </button>
+            <pageLogo></pageLogo>
+          </div>
         </div>
-
       </form>
-      <pageLogo></pageLogo>
+
+
+
 
     </div>
   </div>
@@ -127,19 +132,50 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~@/assets/style.scss';
 
-.order {
+.main {
+  // position: relative;
+  // &:after {
+  //   content: '€';
+  //   position: relative;
+  //   top: 120px;
+  //   left: -50px;
+  //   font-size: 50px;
+  //   z-index: 100;
+  //
+  // }
 
   .order__input {
-    flex: 1;
+    background: url('../assets/images/bonus-card.png');
+    background-position: center center;
+    background-size: 200px 200px;
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    flex: 4;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
 
+    &:after {
+      content: '€';
+      position: relative;
+      display: block;
+      left: -40px;
+      top: -25px;
+      font-size: 80px;
+    }
 
     input {
       display: block;
+      position: relative;
+      top: 75px;
+      left: 10px;
 
-      width: 100%;
+      max-width: 200px;
       padding: 5px;
 
       transition: all 0.3s ease-out;
@@ -150,11 +186,11 @@ export default {
       background: rgba(255, 255, 255, 0);
       border: 0;
 
-      font-size: 20px;
+      font-size: 80px;
 
       outline: none;
 
-      &focus {
+      &:focus {
         outline: none;
         background-position: 0 -1.7em;
       }
@@ -166,6 +202,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
 
     span {
       border-radius: 50% 50%;
@@ -175,16 +212,28 @@ export default {
       width: 25px;
       height: 25px;
       margin: 0 10px;
+      font-size: 20px;
+
+      &:nth-child(2) {
+        &:after {
+          content: '';
+          display: block;
+          position: relative;
+          height: 40px;
+          width: 2px;
+          top: -30px;
+          left: -25px;
+          background-color: white;
+        }
+      }
 
     }
   }
 
-  .order__continue {
-    flex: 1;
-    display: flex;
-    align-items: center;
+  .bottom {
+    left: 0;
+    right: 0;
   }
-
 }
 
 </style>

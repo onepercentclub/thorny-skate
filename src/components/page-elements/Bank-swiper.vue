@@ -3,7 +3,9 @@
 <template>
   <div class="selection">
     <swiper class="selection__choice" :options="swiperOption">
-      <swiper-slide v-for="method in methods"  class="" v-on:click="selectMethod(method.value)"><h5 class="">{{method.label}}</h5></swiper-slide>
+      <swiper-slide v-for="method in methods" v-bind:key="method.value" class="" v-on:click="selectMethod(method.value)">
+        <h5 class="">{{method.label}}</h5>
+      </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
@@ -27,17 +29,19 @@
     border: 0;
     border-radius: 8px;
     background-color: rgba(47,187,169,1);
+    width: 100px;
 
-    &:focus {
+    &.swiper-slide-active {
       border: 2px solid rgba(255,180,0,1);
       outline: none;
     }
 
-    > div {
+    > h5 {
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 24px;
     }
   }
 </style>
@@ -52,10 +56,10 @@ export default {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
-        slidesPerView: 4,
+        slidesPerView: 2,
         centeredSlides: true,
         paginationClickable: true,
-        spaceBetween: 30,
+        spaceBetween: 20,
       },
       methods,
     };

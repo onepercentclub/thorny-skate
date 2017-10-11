@@ -1,9 +1,19 @@
+@font-face {
+    font-family: 'huge';
+    src: url('assets/fonts/huge.eot');
+    src: url('assets/fonts/huge.eot') format('embedded-opentype'),
+         url('assets/fonts/huge.woff2') format('woff2'),
+         url('assets/fonts/huge.woff') format('woff'),
+         url('assets/fonts/huge.ttf') format('truetype'),
+         url('assets/fonts/huge.svg#huge') format('svg');
+}
+
 body,
 html {
   width: 100% !important;
   height: 100%;
 
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'huge', Helvetica, Arial, sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,12 +45,14 @@ h1,
 h2,
 h3,
 h4 {
+  font-family: 'huge', Helvetica, Arial, sans-serif;
   margin: 10px 0;
 
   text-transform: uppercase;
 
   font-weight: inherit;
   line-height: 1.2;
+  color: white;
 }
 
 h1 {
@@ -50,20 +62,37 @@ h1 {
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 50px;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 30px;
+  margin-top: 20px;
+
 }
 
 h4 {
-  font-size: 1.2em;
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 18px;
 }
 
 .font_small,
 small {
   font-size: 0.833em;
+}
+
+button {
+  color: white;
+  font-size: 30px;
+}
+
+button, input {
+  font-family: 'huge', Helvetica, Arial, sans-serif;
+
+
 }
 
 .app {
@@ -81,22 +110,59 @@ small {
   display: flex;
   flex-direction: column;
   height: 100%;
+  justify-content: center;
+
+  .top,
+  .bottom {
+    flex: 1;
+    position: absolute;
+    align-self: center;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .main {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    > * {
+      flex: 1;
+    }
+  }
+
+  .top {
+    top: 0;
+  }
+
+  .bottom {
+    bottom: 0;
+  }
 
   h2 {
-    flex: 1
+    flex: 1;
+
+    &:after {
+      content: '';
+      width: 100%;
+      height:30px;
+      display: block;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+
+      background-image: url('assets/images/divider.png');
+    }
   }
 
   h3 {
     flex: 1;
   }
 
-  form {
+  .order {
     flex: 2;
     display: flex;
     flex-direction: column;
-
   }
-
 }
 
 .card {}
@@ -133,12 +199,19 @@ button:active {
   margin: 20px auto;
 }
 
-.card__footer {
-  margin: 20px auto;
+
+.order__continue {
+  display: block;
+  margin: 0 auto;
 }
 
 .powered-by {
   flex: 1;
+  margin-top: 20px;
+}
+
+.swiper-pagination-bullet {
+  background-color: white !important;
 }
 
 @media (min-width: 1000px) {

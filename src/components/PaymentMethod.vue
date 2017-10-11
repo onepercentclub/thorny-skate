@@ -7,35 +7,47 @@
     </div>
 
     <div class="grid">
-      <h2 v-if="customTitle">
-        {{customTitle}}
-      </h2>
+      <div class="top">
+        <h2 v-if="customTitle">
+          {{customTitle}}
+        </h2>
 
-      <h2 v-else>
-        {{project.title}}
-      </h2>
+        <h2 v-else>
+          {{project.title}}
+        </h2>
 
-      <h3 v-if="customSubtitle">
-        {{customSubtitle}}
-      </h3>
-
-      <div class="info">
-        <div class="project">
-          <h4>For project</h4>
-          <h5>ProjectTitle</h5>
-        </div>
-
-        <div class="donation">
-          <h4>Donation</h4>
-          <h5>{{donation.amount.amount}}</h5>
-        </div>
-
+        <h3 v-if="customSubtitle">
+          {{customSubtitle}}
+        </h3>
       </div>
-      <h4>Payment method</h4>
+      <div class="main">
+        <div class="info">
+          <div class="project">
+            <h4>For project</h4>
+            <h5>ProjectTitle</h5>
+          </div>
 
-      <mySwiper></mySwiper>
+          <div class="donation">
+            <h4>Donation</h4>
+            <h5>€{{donation.amount.amount}}</h5>
+          </div>
 
-      <goodUp></goodUp>
+        </div>
+        <h4>Payment method</h4>
+
+        <mySwiper></mySwiper>
+      </div>
+
+      <div class="bottom">
+        <div class="order__continue">
+          <button class="button" type="submit">
+            Betalen
+          </button>
+
+        </div>
+
+        <goodUp></goodUp>
+      </div>
     </div>
   </div>
 </template>
@@ -93,7 +105,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~@/assets/style.scss';
 
 
 .wallpaper {
@@ -102,51 +113,17 @@ export default {
 .info {
   display: flex;
   justify-content: space-between;
-  flex: 0.5;
 }
 
 .selection {
   display: flex;
   flex: 1;
-  overflow-x: scroll;
-
-  .selection__choice {
-    height: 90px;
-    min-width: 70%;
-    margin: 0 20px;
-    border: 0;
-    border-radius: 8px;
-    background-color: rgba(47,187,169,1);
-
-    &:focus {
-      border: 2px solid rgba(255,180,0,1);
-      outline: none;
-    }
-
-    > div {
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
 }
 
 h4 {
-  flex: 0.5;
   display: flex;
   align-items: center;
   justify-content: left;
-}
-
-.card {
-  margin: 50px auto;
-
-  h3 {
-    margin: 0;
-
-    font-size: 30px;
-  }
 }
 
 @media (min-width: 1000px) {

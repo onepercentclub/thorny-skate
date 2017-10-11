@@ -15,7 +15,6 @@
             <h2 class="card__header--title">{{project.title}}</h2>
           </div>
           <div class="card__pitch">
-            <arrow></arrow>
             <p v-html="project.pitch"></p>
           </div>
           <div class="card__footer">
@@ -86,22 +85,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~@/assets/style.scss';
 
 .wallpaper {
   background-image: url("http://www.planwallpaper.com/static/images/cat-wallpaper-animals_GLl9liz.jpg");
-}
-
-.arrow {
-  position: fixed;
-  top: 55%;
-  right: 20px;
-}
-
-@media (min-width: 1000px) {
-  .arrow {
-    display: none;
-  }
 }
 
 </style>

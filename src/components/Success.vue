@@ -3,24 +3,32 @@
     <paper></paper>
 
     <div class="grid">
-      <goodUp></goodUp>
 
       <div v-if="order && project">
-        <div class="card">
-          <div class="card__header">
-            <h3 class="card__header--title">We show a success page with confetti here because your donated €{{order.total.amount}}!</h3>
+        <div class="top">
+
+        </div>
+        <div class="main">
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__header--title">We show a success page with confetti here because your donated €{{order.total.amount}}!</h3>
+            </div>
+            <div class="card__pitch"><p>Show this screen to the vendor, we hope you're happy with your new stuff!</p></div>
+            <div class="card__footer">
+              €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
+              <div class="card__footer--action">
+                  <router-link :to="{ path: 'project', query: { slug: project.id }}">
+                    <button type="button" name="button">
+                      Show project!
+                    </button>
+                  </router-link>
+                </div>
+            </div>
           </div>
-          <div class="card__pitch"><p>Show this screen to the vendor, we hope you're happy with your new stuff!</p></div>
-          <div class="card__footer">
-            €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
-            <div class="card__footer--action">
-                <router-link :to="{ path: 'project', query: { slug: project.id }}">
-                  <button type="button" name="button">
-                    Show project!
-                  </button>
-                </router-link>
-              </div>
-          </div>
+        </div>
+
+        <div class="bottom">
+          <goodUp></goodUp>
         </div>
       </div>
     </div>
