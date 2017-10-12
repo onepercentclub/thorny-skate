@@ -14,7 +14,9 @@
 
           <h2>{{order.total.amount}} Euro</h2>
 
-          <h3>Show this to your vendor and get your bonus card</h3>
+          <hr>
+
+          <h4>Show this to your vendor and get your bonus card</h4>
         </div>
 
         <div class="bottom">
@@ -83,6 +85,13 @@ export default {
 
 <style scoped lang="scss">
 
+h2 {
+  &:after {
+    background: none;
+    height: 0;
+  }
+}
+
 .grid {
   .top {
     left:0;
@@ -95,21 +104,21 @@ export default {
 
       &:after {
         background-image: url('../assets/images/check.png');
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
         content: '';
         display: block;
         position: relative;
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100%;
-        top: 40px;
-        left: 10px;
-
+        top: 0px;
+        left: 0px;
       }
-
-
     }
+  }
+
+  .main {
   }
 }
 canvas {

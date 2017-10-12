@@ -100,7 +100,7 @@ export default {
         background-position: center;
         background-size: 100%;
         top: 0px;
-        left: 10px;
+        left: 0px;
 
       }
     }
