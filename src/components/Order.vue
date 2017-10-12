@@ -38,7 +38,7 @@
           <span
             class="buttons__decrease"
             role="button"
-            v-if="amount"
+            v-if="amount > 10"
             v-on:click="changeAmount(-10)"
           >
             -1
@@ -62,10 +62,6 @@
           </div>
         </div>
       </form>
-
-
-
-
     </div>
   </div>
 </template>
@@ -77,8 +73,12 @@ import wallpaper from '@/components/page-elements/Wallpaper';
 import logo from '@/components/page-elements/Logo';
 
 export default {
-  computed: {
+  components: {
+    pageLogo: logo,
+    paper: wallpaper,
+  },
 
+  computed: {
     donation() {
       return this.$store.state.donation;
     },
@@ -86,6 +86,7 @@ export default {
       return this.$store.state.project;
     },
   },
+
   created() {
     this.slug = this.$route.query.slug || window.localStorage.getItem('slug');
 
@@ -96,15 +97,17 @@ export default {
       this.missingSlug = true;
     }
   },
+
   data() {
     return {
       customTitle: 'Supermercado!',
       customSubtitle: 'Buy your bonus card',
-      amount: 0,
+      amount: 10,
       missingSlug: false,
       slug: null,
     };
   },
+
   methods: {
     addDonation() {
       this.postDonation({ amount: this.amount, slug: this.slug }).then(() => {
@@ -123,11 +126,6 @@ export default {
   },
 
   name: 'order',
-
-  components: {
-    pageLogo: logo,
-    paper: wallpaper,
-  },
 };
 </script>
 
