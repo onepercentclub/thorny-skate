@@ -3,13 +3,14 @@
     <paper></paper>
 
     <div class="grid">
+
       <div v-if="order && project">
         <div class="top">
           <div class="top__image--container">
           </div>
         </div>
         <div class="main">
-          <h2>Your transaction was declined</h2>
+          <h3>Your transaction was declined</h3>
         </div>
 
         <div class="bottom">
@@ -19,15 +20,15 @@
               type="submit"
               v-on:click="returnToStart"
             >
-              Back to Payment
+              Try again
             </button>
           </div>
+          <goodUp></goodUp>
         </div>
       </div>
-
-      <goodUp></goodUp>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -78,6 +79,34 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.grid {
+  .top {
+    left:0;
+    width: 100%;
+
+    .top__image--container {
+      display: block;
+      border: 4px solid rgba(255, 255, 255, 0);
+      background-color: grey;
+
+      &:after {
+        background-image: url('../assets/images/failure.png');
+        width: 150px;
+        height: 150px;
+        content: '';
+        display: block;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        top: 0px;
+        left: 10px;
+
+      }
+    }
+  }
+}
+
 canvas {
   position: absolute;
   top: 0;
@@ -87,6 +116,8 @@ canvas {
 }
 
 .wallpaper {
+  background-image: url('../assets/images/bg-failure.png');
+  background-size: contain !important;
 }
 
 .card__footer--action {

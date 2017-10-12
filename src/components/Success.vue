@@ -10,11 +10,9 @@
           </div>
         </div>
         <div class="main">
-          <h2>Your payment has been approved</h2>
+          <h3>Your payment has been approved</h3>
 
-          <div class="donated-amount">
-            € Hier dynamische data
-          </div>
+          <h2>Euro</h2>
 
           <h3>Show this to your vendor and get your bonus card</h3>
         </div>
@@ -84,6 +82,36 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.grid {
+  .top {
+    left:0;
+    width: 100%;
+
+    .top__image--container {
+      display: block;
+      border: 4px solid white;
+      background-image: url('../assets/images/0.png');
+
+      &:after {
+        background-image: url('../assets/images/check.png');
+        width: 150px;
+        height: 150px;
+        content: '';
+        display: block;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        top: 40px;
+        left: 10px;
+
+      }
+
+
+    }
+  }
+}
 canvas {
   position: absolute;
   top: 0;
@@ -93,6 +121,8 @@ canvas {
 }
 
 .wallpaper {
+  background-image: url('../assets/images/bg-approved.png');
+  background-size: contain !important;
 }
 
 .card__footer--action {
