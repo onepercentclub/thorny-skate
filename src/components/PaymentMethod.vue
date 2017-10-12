@@ -20,7 +20,7 @@
         <div class="info">
           <div class="project">
             <h4>For project</h4>
-            <h5>ProjectTitle</h5>
+            <h5>{{customTitle}}</h5>
           </div>
 
           <div
@@ -81,7 +81,7 @@ export default {
   },
   data() {
     return {
-      customTitle: 'Supermercado!',
+      customTitle: '¡Supermercado!',
       customSubtitle: 'Choose your bank',
       loading: false,
       methods,
@@ -133,6 +133,10 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: left;
+}
+
+h5 {
+  text-align: left;
 }
 
 @media (min-width: 1000px) {

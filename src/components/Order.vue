@@ -100,7 +100,7 @@ export default {
 
   data() {
     return {
-      customTitle: 'Supermercado!',
+      customTitle: '¡Supermercado!',
       customSubtitle: 'Buy your bonus card',
       amount: 10,
       missingSlug: false,
@@ -172,6 +172,7 @@ export default {
       position: relative;
       top: 75px;
       left: 10px;
+      color: #000 !important;
 
       max-width: 200px;
       padding: 5px;
@@ -210,18 +211,26 @@ export default {
       height: 25px;
       margin: 0 20px;
       font-size: 20px;
+      color: white;
+      box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+      outline: none;
+      transition: .1s all;
+      top: 0px;
 
-      &:nth-child(2) {
-        &:after {
-          content: '';
-          display: block;
-          position: relative;
-          height: 50px;
-          width: 3px;
-          top: -40px;
-          left: -35px;
-          background-color: white;
-        }
+      &:last-child {
+        background-color: #72C2B0;
+
+      }
+
+      &:active {
+        position: relative;
+        top: 2px;
+        box-shadow: none !important;
+
+        trasition: All 250ms ease;
+
+        outline: none;
+
       }
     }
   }

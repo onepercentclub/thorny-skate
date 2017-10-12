@@ -87,7 +87,7 @@ export default {
     .top__image--container {
       display: block;
       border: 4px solid rgba(255, 255, 255, 0);
-      background-color: grey;
+      background-color: rgba(255,255,255, .7);
 
       &:after {
         background-image: url('../assets/images/failure.png');
