@@ -1,5 +1,5 @@
 const apiUrl = process.env.NODE_ENV === 'production'
-  ? 'https://thorn-skate.dokku.onepercentclub.com/#/'
+  ? 'https://thorny-skate.dokku.onepercentclub.com/#/'
   : 'http://localhost:8080/#/';
 
 export const getAuthorizationUrl = (dirtyUrl, order) => {
