@@ -12,7 +12,7 @@
         <div class="main">
           <h3>Your payment has been approved</h3>
 
-          <h2>Euro</h2>
+          <h2>{{order.total.amount}} Euro</h2>
 
           <h3>Show this to your vendor and get your bonus card</h3>
         </div>
