@@ -1,15 +1,45 @@
-<!-- You can custom the "mySwiper" name used to find the swiper instance in current component -->
-
 <template>
   <div class="selection">
-    <swiper class="selection__choice" :options="swiperOption">
-      <swiper-slide v-for="method in methods" v-bind:key="method.value" class="" v-on:click="selectMethod(method.value)">
-        <h5 class="">{{method.label}}</h5>
+    <swiper
+      :options="swiperOption"
+      class="selection__choice"
+    >
+      <swiper-slide
+        v-bind:key="method.value"
+        v-for="method in methods"
+        v-on:click="selectMethod(method.value)"
+      >
+        <h5>
+          {{method.label}}
+        </h5>
       </swiper-slide>
+
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      swiperOption: {
+        pagination: '.swiper-pagination',
+        onTransitionEnd: (slider) => {
+          const method = this.methods[slider.activeIndex].value;
+          this.$emit('update:selectedMethod', method);
+        },
+        slidesPerView: 2,
+        centeredSlides: true,
+        paginationClickable: true,
+        spaceBetween: 20,
+      },
+    };
+  },
+
+  props: ['methods', 'selectedMethod'],
+};
+</script>
 
 <style scoped lang="scss">
   @keyframes wobble {
@@ -47,36 +77,3 @@
     }
   }
 </style>
-
-<script>
-import { postOrderPayment } from '@/api';
-import { getAuthorizationUrl } from '@/utils';
-import methods from '@/api/payment-methods';
-
-export default {
-  data() {
-    return {
-      swiperOption: {
-        pagination: '.swiper-pagination',
-        slidesPerView: 1.5,
-        loop: true,
-        centeredSlides: true,
-        paginationClickable: true,
-        spaceBetween: 10,
-      },
-      methods,
-    };
-  },
-
-  methods: {
-    selectMethod(method) {
-      postOrderPayment(method, this.donation.order).then((response) => {
-        window.location = getAuthorizationUrl(
-          response.authorization_action.url,
-          this.donation.order,
-        );
-      });
-    },
-  },
-};
-</script>

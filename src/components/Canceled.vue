@@ -14,12 +14,14 @@
 
         <div class="bottom">
           <div class="order__continue">
-            <button class="button" type="submit">
+            <button
+              class="button"
+              type="submit"
+              v-on:click="returnToStart"
+            >
               Back to Payment
             </button>
           </div>
-
-          <goodUp></goodUp>
         </div>
       </div>
 
@@ -36,6 +38,11 @@ import wallpaper from '@/components/page-elements/Wallpaper';
 import logo from '@/components/page-elements/Logo';
 
 export default {
+  components: {
+    paper: wallpaper,
+    goodUp: logo,
+  },
+
   computed: {
     order() {
       return this.$store.state.order;
@@ -57,19 +64,16 @@ export default {
   },
 
   methods: {
+    returnToStart() {
+      router.push({ path: '/' });
+    },
     ...mapActions([
       'getOrder',
       'getProject',
     ]),
   },
 
-  name: 'success',
-
-  components: {
-    paper: wallpaper,
-    goodUp: logo,
-  },
-
+  name: 'canceled',
 };
 </script>
 

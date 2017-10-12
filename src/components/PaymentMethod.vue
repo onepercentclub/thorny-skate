@@ -2,10 +2,6 @@
   <div>
     <paper></paper>
 
-    <div v-if="missingSlug">
-      Please submit a slug
-    </div>
-
     <div class="grid">
       <div class="top">
         <h2 v-if="customTitle">
@@ -27,7 +23,10 @@
             <h5>ProjectTitle</h5>
           </div>
 
-          <div class="donation">
+          <div
+            class="donation"
+            v-if="donation"
+          >
             <h4>Donation</h4>
             <h5>€{{donation.amount.amount}}</h5>
           </div>
@@ -35,15 +34,23 @@
         </div>
         <h4>Payment method</h4>
 
-        <mySwiper></mySwiper>
+        <bankSwiper
+          :methods="methods"
+          :selectedMethod.sync="selectedMethod"
+        ></bankSwiper>
       </div>
 
       <div class="bottom">
         <div class="order__continue">
-          <button class="button" type="submit">
-            Pay
-          </button>
+          <button class="button" type="submit" v-on:click="toPayment">
+            <span v-if="loading">
+              Laden...
+            </span>
 
+            <span v-else>
+              Betalen
+            </span>
+          </button>
         </div>
 
         <goodUp></goodUp>
@@ -59,7 +66,6 @@ import methods from '@/api/payment-methods';
 import router from '@/router';
 import wallpaper from '@/components/page-elements/Wallpaper';
 import logo from '@/components/page-elements/Logo';
-import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import bankSwiper from '@/components/page-elements/Bank-swiper';
 
 export default {
@@ -77,12 +83,16 @@ export default {
     return {
       customTitle: 'Supermercado!',
       customSubtitle: 'Choose your bank',
-
+      loading: false,
       methods,
+      selectedMethod: null,
     };
   },
   methods: {
-    selectMethod(method) {
+    toPayment() {
+      this.loading = true;
+      const method = this.selectedMethod;
+
       postOrderPayment(method, this.donation.order).then((response) => {
         window.location = getAuthorizationUrl(
           response.authorization_action.url,
@@ -96,9 +106,7 @@ export default {
   components: {
     paper: wallpaper,
     goodUp: logo,
-    mySwiper: bankSwiper,
-    swiper,
-    swiperSlide,
+    bankSwiper,
   },
 
 };
