@@ -12,7 +12,7 @@ export default [
     value: 'INGBNL2A',
   },
   {
-    label: 'Knab',
+    label: 'Knab Bank',
     value: 'KNABNL2H',
   },
   {
@@ -36,7 +36,7 @@ export default [
     value: 'SNSBNL2A',
   },
   {
-    label: 'Bunq',
+    label: 'Bunq Bank',
     value: 'BUNQNL2A',
   },
 ];

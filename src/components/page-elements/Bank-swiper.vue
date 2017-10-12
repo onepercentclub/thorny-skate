@@ -29,10 +29,10 @@ export default {
           const method = this.methods[slider.activeIndex].value;
           this.$emit('update:selectedMethod', method);
         },
-        slidesPerView: 2,
+        slidesPerView: 1.5,
         centeredSlides: true,
         paginationClickable: true,
-        spaceBetween: 20,
+        spaceBetween: 10,
       },
     };
   },
@@ -58,8 +58,47 @@ export default {
     height: 90px;
     border: 0;
     border-radius: 8px;
-    background-color: rgba(47,187,169,1);
     width: 100px;
+
+    &:nth-child(1) {
+      background-color: #009D8B; //ABN
+    }
+
+    &:nth-child(2) {
+      background-color: #E41A23; //ASN
+    }
+
+    &:nth-child(3) {
+      background-color: #FF5812; //ING
+    }
+
+    &:nth-child(4) {
+      background-color: #3e4b5b; //KNAB
+    }
+
+    &:nth-child(5) {
+      background-color: #72994d;
+    }
+
+    &:nth-child(6) {
+    	background-color: #F5A623;
+    }
+
+    &:nth-child(7) {
+      background-color: #cb0e12;
+    }
+
+    &:nth-child(8) {
+      background-color: #01947a;
+    }
+
+    &:nth-child(9) {
+      background-color: #54287d;
+    }
+
+    &:nth-child(10) {
+      background-color: brown;
+    }
 
     &.swiper-slide-active {
       border: 2px solid rgba(255,180,0,1);
@@ -74,6 +113,7 @@ export default {
       justify-content: center;
       align-items: center;
       font-size: 24px;
+      color: white;
     }
   }
 </style>
