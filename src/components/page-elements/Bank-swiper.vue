@@ -42,18 +42,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.swiper-slide {
-    width: 60%;
-  }
-
-  .swiper-slide:nth-child(2n) {
-      width: 40%;
-  }
-
-  .swiper-slide:nth-child(3n) {
-      width: 20%;
-  }
-
+  @keyframes wobble {
+    0% {transform: translateX(0%);}
+    15% {transform: rotate(-5deg);}
+    30% {transform: rotate(3deg);}
+    45% {transform: rotate(-3deg);}
+    60% {transform: rotate(2deg);}
+    75% {transform: rotate(-1deg);}
+    100% {transform: translateX(0%);}
+}
+.swiper-container, .swiper-wrapper {
+  padding: 5px;
+}
   .swiper-slide {
     height: 90px;
     border: 0;
@@ -64,6 +64,8 @@ export default {
     &.swiper-slide-active {
       border: 2px solid rgba(255,180,0,1);
       outline: none;
+      animation-name: wobble;
+      animation-duration: .5s;
     }
 
     > h5 {

@@ -146,9 +146,9 @@ export default {
   .order__input {
     background: url('../assets/images/bonus-card.png');
     background-position: center center;
-    background-size: 200px 200px;
-    max-width: 200px;
-    max-height: 200px;
+    background-size: 170px 170px;
+    //max-width: 200px;
+  //  max-height: 200px;
     display: block;
     margin: 0 auto;
     background-repeat: no-repeat;
