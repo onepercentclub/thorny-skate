@@ -118,7 +118,7 @@ export default {
 .selection {
   display: flex;
   flex: 1;
-  height: 120px;
+  height: 130px;
 }
 
 h4 {
