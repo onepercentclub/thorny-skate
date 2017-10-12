@@ -122,16 +122,13 @@ button, input {
   }
 
   .main {
-    min-height: 300px;
-    display: flex;
-    flex-direction: column;
     > * {
       flex: 1;
     }
   }
 
   .top {
-    top: 50px;
+    top: 20px;
 
     .top__image--container {
       overflow: hidden;
@@ -224,6 +221,7 @@ button:active {
 
 .swiper-pagination-bullet {
   background-color: white !important;
+
 }
 
 @media (min-width: 1000px) {

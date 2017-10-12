@@ -12,18 +12,6 @@
 </template>
 
 <style scoped lang="scss">
-.swiper-slide {
-    width: 60%;
-  }
-
-  .swiper-slide:nth-child(2n) {
-      width: 40%;
-  }
-
-  .swiper-slide:nth-child(3n) {
-      width: 20%;
-  }
-
   .swiper-slide {
     height: 90px;
     border: 0;
@@ -56,10 +44,11 @@ export default {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
-        slidesPerView: 2,
+        slidesPerView: 1.5,
+        loop: true,
         centeredSlides: true,
         paginationClickable: true,
-        spaceBetween: 20,
+        spaceBetween: 10,
       },
       methods,
     };

@@ -41,7 +41,7 @@
       <div class="bottom">
         <div class="order__continue">
           <button class="button" type="submit">
-            Betalen
+            Pay
           </button>
 
         </div>
@@ -118,6 +118,7 @@ export default {
 .selection {
   display: flex;
   flex: 1;
+  height: 120px;
 }
 
 h4 {
