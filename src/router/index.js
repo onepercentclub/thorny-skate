@@ -16,21 +16,25 @@ export default new Router({
       name: 'Canceled',
       path: '/canceled',
     },
+
     {
       component: Order,
       name: 'Order',
       path: '/',
     },
+
     {
       component: PaymentMethod,
       name: 'PaymentMethod',
       path: '/paymentmethod',
     },
+
     {
       component: Project,
       name: 'Project',
       path: '/project',
     },
+
     {
       component: Success,
       name: 'Success',

@@ -1,33 +1,27 @@
 <template>
   <div>
+    <div class="meter">
+      <div class="meter__filler" style="height: 90%;"></div>
+    </div>
     <paper></paper>
-
     <div class="grid">
-      <goodUp></goodUp>
-
       <div v-if="missingSlug">
         Please submit a slug
       </div>
 
       <div v-if="project">
-        <div class="card">
-          <div class="card__header">
-            <h2 class="card__header--title">{{project.title}}</h2>
+
+        <main>
+          <div class="">
+            <h2>X people donated €1200</h2>
           </div>
-          <div class="card__pitch">
-            <p v-html="project.pitch"></p>
-          </div>
-          <div class="card__footer">
-            €{{project.amount_donated.amount}} of €{{project.amount_asked.amount}} donated by {{project.supporter_count}} supporters!
-            <div class="card__footer--action">
-              <router-link to="/">
-                <button type="button" name="button">
-                  Donate
-                </button>
-              </router-link>
-            </div>
-          </div>
-        </div>
+
+        </main>
+
+
+      </div>
+      <div class="bottom">
+        <goodUp></goodUp>
       </div>
     </div>
   </div>
@@ -86,8 +80,41 @@ export default {
 
 <style scoped lang="scss">
 
+.meter{
+  height: 75vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  z-index: -1;
+
+  .meter__filler {
+    background-color: #E47872;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    transform: rotate(180deg);
+  }
+}
+
+
+main {
+  h2 {
+    position: relative;
+    left: -200px;
+    transform: rotate(-35deg);
+
+    &:after {
+      background-image: none;
+    }
+  }
+}
+
 .wallpaper {
-  background-image: url("http://www.planwallpaper.com/static/images/cat-wallpaper-animals_GLl9liz.jpg");
+  background-image: url('../assets/images/project-wp.png');
+  background-repeat: no-repeat;
 }
 
 </style>
