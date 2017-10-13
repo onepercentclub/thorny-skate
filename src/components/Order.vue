@@ -124,9 +124,13 @@ export default {
     addDonation() {
       this.loading = true;
 
-      const { amount, fundraiser, slug } = this;
+      const { amount, fundraiser } = this;
 
-      this.postDonation({ amount, fundraiser, slug }).then(() => {
+      if (!this.slug) {
+        this.slug = this.project.project;
+      }
+
+      this.postDonation({ amount, fundraiser, slug: this.slug }).then(() => {
         router.push({ path: '/paymentmethod' });
       }, (error) => {
         console.log(error);

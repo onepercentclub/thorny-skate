@@ -54,14 +54,18 @@ export default {
       return this.$store.state.order;
     },
     project() {
-      return this.$store.state.project;
+      return this.$store.state.fundraiser || this.$store.state.project;
     },
   },
 
   created() {
+    const fundraiser = window.localStorage.getItem('fundraiser');
     const slug = window.localStorage.getItem('slug');
 
-    if (slug) {
+    if (fundraiser) {
+      this.getFundraiser(fundraiser);
+      this.getOrder(this.$route.query.order);
+    } else if (slug) {
       this.getProject(slug);
       this.getOrder(this.$route.query.order);
     } else {
@@ -74,6 +78,7 @@ export default {
       router.push({ path: '/' });
     },
     ...mapActions([
+      'getFundraiser',
       'getOrder',
       'getProject',
     ]),

@@ -88,7 +88,7 @@ export default {
   },
 
   created() {
-    if (!window.localStorage.getItem('slug') || !this.donation) {
+    if (!(window.localStorage.getItem('fundraiser') || window.localStorage.getItem('slug')) || !this.donation) {
       router.push({ path: '/' });
     }
   },
