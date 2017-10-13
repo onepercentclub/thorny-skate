@@ -55,8 +55,19 @@
 
         <div class="bottom">
           <div class="order__continue">
-            <button class="button" type="submit">
-              Continue
+            <button
+              :disabled="loading"
+              class="button"
+              type="submit"
+              v-bind:class="{ 'button--loading': loading }"
+            >
+              <span v-if="loading">
+                Loading...
+              </span>
+
+              <span v-else>
+                Continue
+              </span>
             </button>
             <pageLogo></pageLogo>
           </div>
@@ -88,7 +99,12 @@ export default {
   },
 
   created() {
+    this.fundraiser = this.$route.query.fundraiser || window.localStorage.getItem('fundraiser');
     this.slug = this.$route.query.slug || window.localStorage.getItem('slug');
+
+    if (this.fundraiser) {
+      window.localStorage.setItem('fundraiser', this.fundraiser);
+    }
 
     if (this.slug) {
       this.getProject(this.slug);
@@ -100,9 +116,11 @@ export default {
 
   data() {
     return {
+      amount: 10,
       customTitle: '¡Supermercado!',
       customSubtitle: 'Buy your bonus card',
-      amount: 10,
+      fundraiser: null,
+      loading: false,
       missingSlug: false,
       slug: null,
     };
@@ -110,7 +128,11 @@ export default {
 
   methods: {
     addDonation() {
-      this.postDonation({ amount: this.amount, slug: this.slug }).then(() => {
+      this.loading = true;
+
+      const { amount, fundraiser, slug } = this;
+
+      this.postDonation({ amount, fundraiser, slug }).then(() => {
         router.push({ path: '/paymentmethod' });
       }, (error) => {
         console.log(error);

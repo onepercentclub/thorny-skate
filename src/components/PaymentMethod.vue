@@ -42,7 +42,13 @@
 
       <div class="bottom">
         <div class="order__continue">
-          <button class="button" type="submit" v-on:click="toPayment">
+          <button
+            :disabled="loading"
+            class="button"
+            type="submit"
+            v-bind:class="{ 'button--loading': loading }"
+            v-on:click="toPayment"
+          >
             <span v-if="loading">
               Laden...
             </span>
@@ -75,7 +81,7 @@ export default {
     },
   },
   created() {
-    if (!window.localStorage.getItem('slug')) {
+    if (!window.localStorage.getItem('slug') || !this.donation) {
       router.push({ path: '/' });
     }
   },

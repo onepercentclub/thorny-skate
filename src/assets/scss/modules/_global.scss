@@ -204,6 +204,10 @@ button {
   width: 251px;
   margin: 0 auto;
   transition: .1s all;
+
+  &.button--loading {
+    background-color: #777;
+  }
 }
 
 button:active {
@@ -212,7 +216,7 @@ button:active {
 
   box-shadow: none !important;
 
-  trasition: All 250ms ease;
+  transition: All 250ms ease;
 
   outline: none;
 

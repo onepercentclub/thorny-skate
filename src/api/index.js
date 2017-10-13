@@ -11,7 +11,7 @@ export const getOrder = id => api.get(`orders/my/${id}`).then(({ data }) => data
 
 export const getProject = slug => api.get(`bb_projects/projects/${slug}`).then(({ data }) => data);
 
-export const postDonation = (amount, slug) => api.post('orders/my/').then((response) => {
+export const postDonation = (amount, fundraiser, slug) => api.post('orders/my/').then((response) => {
   // Get the order id
   const { data: { id: order } } = response;
 
@@ -22,6 +22,7 @@ export const postDonation = (amount, slug) => api.post('orders/my/').then((respo
       currency: 'EUR',
     },
     anonymous: true,
+    fundraiser,
     order,
     project: slug,
   };

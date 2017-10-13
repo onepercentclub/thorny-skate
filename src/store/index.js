@@ -6,9 +6,12 @@ import { getOrder, getProject, postDonation } from '@/api';
 Vue.use(Vuex);
 
 const actions = {
-  getOrder: ({ commit }, id) => getOrder(id).then(order => commit('getOrder', order)),
-  getProject: ({ commit }, slug) => getProject(slug).then(project => commit('getProject', project)),
-  postDonation: ({ commit }, { amount, slug }) => postDonation(amount, slug).then(donation => commit('postDonation', donation)),
+  getOrder: ({ commit }, id) => getOrder(id)
+    .then(order => commit('getOrder', order)),
+  getProject: ({ commit }, slug) => getProject(slug)
+    .then(project => commit('getProject', project)),
+  postDonation: ({ commit }, { amount, fundraiser, slug }) => postDonation(amount, fundraiser, slug)
+    .then(donation => commit('postDonation', donation)),
 };
 
 const mutations = {
