@@ -2,17 +2,13 @@
   <div>
     <paper></paper>
 
-    <div v-if="missingSlug">
-      Please submit a slug
+    <div v-if="missingProject">
+      Please submit a slug or fundraiser
     </div>
 
     <div class="grid" v-if="project">
       <div class="top">
-        <h2 v-if="customTitle">
-          {{customTitle}}
-        </h2>
-
-        <h2 v-else>
+        <h2>
           {{project.title}}
         </h2>
 
@@ -94,7 +90,7 @@ export default {
       return this.$store.state.donation;
     },
     project() {
-      return this.$store.state.project;
+      return this.$store.state.project || this.$store.state.fundraiser;
     },
   },
 
@@ -103,25 +99,23 @@ export default {
     this.slug = this.$route.query.slug || window.localStorage.getItem('slug');
 
     if (this.fundraiser) {
+      this.getFundraiser(this.fundraiser);
       window.localStorage.setItem('fundraiser', this.fundraiser);
-    }
-
-    if (this.slug) {
+    } else if (this.slug) {
       this.getProject(this.slug);
       window.localStorage.setItem('slug', this.slug);
     } else {
-      this.missingSlug = true;
+      this.missingProject = true;
     }
   },
 
   data() {
     return {
       amount: 10,
-      customTitle: '¡Supermercado!',
       customSubtitle: 'Buy your bonus card',
       fundraiser: null,
       loading: false,
-      missingSlug: false,
+      missingProject: false,
       slug: null,
     };
   },
@@ -142,6 +136,7 @@ export default {
       this.amount = this.amount + amount;
     },
     ...mapActions([
+      'getFundraiser',
       'getProject',
       'postDonation',
     ]),

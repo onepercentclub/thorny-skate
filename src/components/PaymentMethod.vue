@@ -4,11 +4,7 @@
 
     <div class="grid">
       <div class="top">
-        <h2 v-if="customTitle">
-          {{customTitle}}
-        </h2>
-
-        <h2 v-else>
+        <h2>
           {{project.title}}
         </h2>
 
@@ -20,7 +16,8 @@
         <div class="info">
           <div class="project">
             <h4>For project</h4>
-            <h5>{{customTitle}}</h5>
+
+            <h5>{{project.title}}</h5>
           </div>
 
           <div
@@ -75,16 +72,27 @@ import logo from '@/components/page-elements/Logo';
 import bankSwiper from '@/components/page-elements/Bank-swiper';
 
 export default {
+  components: {
+    paper: wallpaper,
+    goodUp: logo,
+    bankSwiper,
+  },
+
   computed: {
     donation() {
       return this.$store.state.donation;
     },
+    project() {
+      return this.$store.state.project || this.$store.state.fundraiser;
+    },
   },
+
   created() {
     if (!window.localStorage.getItem('slug') || !this.donation) {
       router.push({ path: '/' });
     }
   },
+
   data() {
     return {
       customTitle: '¡Supermercado!',
@@ -94,6 +102,7 @@ export default {
       selectedMethod: null,
     };
   },
+
   methods: {
     toPayment() {
       this.loading = true;
@@ -107,14 +116,8 @@ export default {
       });
     },
   },
+
   name: 'paymentMethod',
-
-  components: {
-    paper: wallpaper,
-    goodUp: logo,
-    bankSwiper,
-  },
-
 };
 </script>
 

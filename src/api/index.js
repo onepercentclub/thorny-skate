@@ -7,6 +7,8 @@ const api = axios.create({
   withCredentials: 'include',
 });
 
+export const getFundraiser = id => api.get(`fundraisers/${id}`).then(({ data }) => data);
+
 export const getOrder = id => api.get(`orders/my/${id}`).then(({ data }) => data);
 
 export const getProject = slug => api.get(`bb_projects/projects/${slug}`).then(({ data }) => data);
